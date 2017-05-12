@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="base.css">
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background: red">
+            <div class="swiper-content">
+                <span>slider1</span>
+            </div>
+        </div>
+        <div class="swiper-slide" style="background: blue">
+            <div class="swiper-content">
+                <span>slider2</span>
+            </div>
+        </div>
+        <div class="swiper-slide" style="background: green">
+            <div class="swiper-content">
+                <span>slider3</span>
+            </div>
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"><</div>
+    <div class="swiper-button-next">></div>
+    <div class="swiper-scrollbar"></div>
+</div>
+<script src="swiper.min.js"></script>
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 5000,//自动切换的时间间隔（单位ms），不设定该参数slide不会自动切换
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        scrollbar: '.swiper-scrollbar',
+        loop:true
+    })
+</script>
+</body>
+</html>

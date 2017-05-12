@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="base.css">
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-image" style="background-image:url(http://www.swiper.com.cn/demo/img/Parallax.jpg)"
+         data-swiper-parallax="-23%"  data-swiper-parallax-duration="800"></div>
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" data-hash="slide1">
+            <div class="swiper-content" data-swiper-parallax="-800" data-swiper-parallax-duration="500">
+                <span >slider1</span>
+            </div>
+        </div>
+        <div class="swiper-slide"  data-hash="slide2">
+            <div class="swiper-content" data-swiper-parallax="-800" data-swiper-parallax-duration="500">
+                <span>slider2</span>
+            </div>
+        </div>
+        <div class="swiper-slide"  data-hash="slide3">
+            <div class="swiper-content" data-swiper-parallax="-800" data-swiper-parallax-duration="500">
+                <span>slider3</span>
+            </div>
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-scrollbar"></div>
+</div>
+<script src="swiper.min.js"></script>
+<script language="javascript">
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 5000,//自动切换的时间间隔（单位ms），不设定该参数slide不会自动切换
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        scrollbar: '.swiper-scrollbar',
+        loop: true,
+        parallax: true,
+        hashnav:true,
+    })
+</script>
+</body>
+</html>
