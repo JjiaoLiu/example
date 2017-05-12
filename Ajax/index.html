@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .div1 {
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+        margin: 20px auto;
+    }
+
+    .div2 {
+        width: 300px;
+        height: 100px;
+        border: 1px solid red;
+        margin: 20px auto;
+    }
+
+    body {
+        text-align: center;
+    }
+</style>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+</body>
+</html>
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.open("get", "example.php", false);
+    xhr.onreadystatechange = function () {
+        if (readyState == 4) {
+            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                alert(xhr.responseText);
+            } else {
+                alert("Request waw unseccessful:" + xhr.status);
+            }
+        }
+    };
+    xhr.send(null);
+</script>

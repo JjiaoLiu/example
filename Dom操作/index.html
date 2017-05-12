@@ -15,7 +15,7 @@
             margin: 50px auto;
         }
 
-        #box,textarea {
+        #box, textarea {
             border: 1px solid #ddd;
             padding: 10px;
             width: 100%;
@@ -27,20 +27,22 @@
             margin: 10px 0px;
         }
 
-        .remove{
+        .remove {
             margin: 0 10px;
         }
     </style>
 </head>
 <body>
 <div class="wrap">
-    <textarea name="text" id="text" cols="30" rows="10" placeholder="输入文字测试"></textarea>
-    <div id="box"></div>
-    <button id="addBtn">增加</button>
+    <textarea name="text" id="text" cols="30" rows="10" placeholder="输入文字测试"></textarea><div id="box"></div><button id="addBtn">增加</button>
+</div>
+<div class="wrap">
+    <ul id="myList"><li>javascript</li><li>html</li><li>css</li></ul>
 </div>
 <script>
     function getDom(el) {
-        return document.getElementById(el) ? document.getElementById(el) : document.getElementsByClassName(el)
+        return document.getElementById(el) ?
+            document.getElementById(el) : document.getElementsByClassName(el)
     }
     getDom("addBtn").addEventListener("click", function () {
         if (getDom("text").value != "") {
@@ -56,7 +58,11 @@
             });
         }
     });
-
+    getDom("myList").lastChild.style.color = "red";
+    getDom("myList").firstChild.style.color = "green";
+    getDom("myList").childNodes[1].style.color = "blue";
+    getDom("myList").parentNode.style.background = "#ccc";
+    getDom("box").previousSibling.style.background = "yellow";
 </script>
 </body>
 </html>
