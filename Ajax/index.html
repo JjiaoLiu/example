@@ -23,19 +23,58 @@
     <meta charset="utf-8">
 </head>
 <body>
-</body>
-</html>
+1.什么是ajax？
+　　Ajax 是 Asynchronous JavaScript and XML（以及 DHTML 等）的缩写。
+
+2.ajax需要什么基础?
+　　HTML 用于建立 Web 表单并确定应用程序其他部分使用的字段。
+JavaScript 代码是运行 Ajax 应用程序的核心代码，帮助改进与服务器应用程序的通信。
+3.Ajax的请求步骤
+　　3.1 创建一个对象XMLHttpRequest对象
+　　3.2设置回调onreadystatechange方法
+　　判断成功  status=200 readyStates = 4
+　　3.3 设置open
+　　第一个参数 GET或者POST
+　　第二个参数 Url
+　　第三个参数 true(异步) false(同步)
+　　3.4 发送请求send方法 GET形式send方法没有参数
+　　POST形式send方法有参数   参数的形式 键=值&键=值
+　　3.5 POST请求 需要设置hdader
+　　setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+
+<p>·0：请求未初始化（还没有调用 open()）。</p>
+<p>·1：请求已经建立，但是还没有发送（还没有调用 send()）。</p>
+<p>·2：请求已发送，正在处理中（通常现在可以从响应中获取内容头）。</p>
+<p>·3：请求在处理中；通常响应中已有部分数据可用了，但是服务器还没有完成响应的生成。</p>
+<p>·4：响应已完成；您可以获取并使用服务器的响应了。</p>
 <script>
-    var xhr = new XMLHttpRequest();
-    xhr.open("get", "example.php", false);
-    xhr.onreadystatechange = function () {
-        if (readyState == 4) {
-            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
-                alert(xhr.responseText);
-            } else {
-                alert("Request waw unseccessful:" + xhr.status);
+    function sendAjax() {
+        //创建一个xhr对象
+        if (window.XMLHttpRequest) {
+            var xhr = new XMLHttpRequest();
+        }
+        else {
+            var xhr = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        console.log('initital', xhr.readyState);
+        // 当状态发送改变 回调这个函数
+        xhr.onreadystatechange = function () {
+            console.log(xhr.readyState);
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // 输出响应的文本对象
+                console.log(xhr.responseText);
             }
         }
-    };
-    xhr.send(null);
+        //发送请求
+        xhr.open('GET', '01.php', true);
+        // xhr.open('GET','01.php',false);
+        // xhr.open('GET','01.php');
+        console.log("open", xhr.readyState);
+
+        xhr.send();//异步请求 在这时间点 分线程走
+        console.log('send', xhr.readyState)
+    }
 </script>
+</body>
+</html>

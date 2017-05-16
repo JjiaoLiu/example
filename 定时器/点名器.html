@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>随机点名器</title>
+    <link rel="icon" href="http://caiyanli.top/images/cai.gif">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .box, .zhu {
+            width: 200px;
+            margin: auto;
+
+        }
+
+        .box > div, button {
+            width: 200px;
+            line-height: 50px;
+            height: 50px;
+            vertical-align: middle;
+            text-align: center;
+            border: 1px solid #ccc;
+            font-size: 20px;
+            color: #f03;
+            display: block;
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="cai " id="cai">随机点名器</div>
+    <button onclick="gotoRand()" id="btn">开 始</button>
+</div>
+<script>
+    //声明 所有的人名 组成的数组
+    var nameList = [ 'join', 'reverse', 'sort', 'push', 'pop', 'shift', 'unshift',
+        'splice', 'concat', 'slice', 'indexOf', 'lastIndexOf',
+        'forEach', 'map', 'reduce', 'reduceRight', 'filter',
+        'some', 'every', 'find', 'findIndex', 'entries', 'keys',
+        'values', 'copyWithin', 'includes'];
+    //声明时间的变量
+    var timer = null;
+    //开始 随机的函数
+    function gotoRand() {
+        //获取button 元素
+        var button = document.getElementById('btn');
+        //判断 是开始还是结束
+        if (timer === null) {
+            //开启定时
+            timer = setInterval(getName, 100);
+            //把button的内容改掉
+            button.innerHTML = "暂 停";
+        } else {
+            //清除定时
+            clearInterval(timer);
+            //修改button的内容
+            button.innerHTML = "开 始";
+            //把timer赋值为null
+            timer = null;
+        }
+    }
+    //随机获取姓名函数
+    function getName() {
+        //取随机数
+        var index = Math.floor(Math.random() * nameList.length % nameList.length);
+        //取出姓名放入 div中
+        document.getElementById('cai').innerHTML = nameList[index];
+    }
+</script>
+</body>
+</html>
