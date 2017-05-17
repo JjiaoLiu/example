@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var count = 0;
+    var oldParseInt = parseInt; // 保存原函数
+//    alert(parseInt);//function parseInt(){[native code]}
+    window.ss = function () {
+        count += 1;
+        return oldParseInt.apply(null, arguments); // 调用原函数parseInt
+    };
+
+    // 测试:
+    ss('10');
+    ss('20');
+    ss('30');
+    console.log(count); // 3
+
+    var a = 'Name';
+    var b = a;
+    a = 'changed';
+    console.log(b);//Name
+//    变量是指向对象的引用
+</script>
+</body>
+</html>

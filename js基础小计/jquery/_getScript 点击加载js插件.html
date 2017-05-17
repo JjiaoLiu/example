@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*CSS源代码*/
+        button{
+            display:inline-block;
+            padding:6px 10px;
+            border:1px solid transparent;
+            border-radius:4px;
+            background:#1aba85;
+            color:#fff;
+            font-size:13px;
+            text-align:center;
+            line-height:1.4;
+            margin:5px;
+            cursor:pointer;
+        }
+        div{
+            width:120px;
+            height:100px;
+            background:#1ab;
+            margin:5px;
+            border-radius:4px;
+        }
+    </style>
+</head>
+<body>
+<!-- HTML代码片段中请勿添加<body>标签 //-->
+
+<button id="go">&raquo;点击加载js插件</button>
+
+<div class="block"></div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    /*Javascript代码片段*/
+    (function() {
+        var url = "https://raw.github.com/jquery/jquery-color/master/jquery.color.js";
+        $.getScript(url, function() {
+            $("#go").click(function(){
+                $(".block")
+                        .animate( { backgroundColor: "rgb(255, 180, 180)" }, 1000 )
+                        .delay(500)
+                        .animate( { backgroundColor: "olive" }, 1000 )
+                        .delay(500)
+                        .animate( { backgroundColor: "##1ab" }, 1000 );
+            });
+        });
+    })();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+where:遍历list中的每一个值，返回一个数组， <br/>
+这个数组包含properties所列出的属性的所有的 键 - 值对。<br/>
+findWhere:遍历整个list，返回匹配 properties参数所列出的所有 键 - 值 对的第一个值。<br/>
+如果没有找到匹配的属性，或者list是空的，那么将返回undefined。
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    _.where(listOfPlays, {author: "Shakespeare", year: 1611});
+//    => [{title: "Cymbeline", author: "Shakespeare", year: 1611},
+//        {title: "The Tempest", author: "Shakespeare", year: 1611}]
+    _.findWhere(publicServicePulitzers, {newsroom: "The New York Times"});
+//    => {year: 1918, newsroom: "The New York Times",
+//            reason: "For its public service in publishing in full so many official reports,
+//        documents and speeches by European statesmen relating to the progress and
+//        conduct of the war."}
+</script>
+</body>
+</html>

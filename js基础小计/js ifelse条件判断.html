@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+小明身高1.75，体重80.5kg。请根据BMI公式（体重除以身高的平方）帮小明计算他的BMI指数，并根据BMI指数：<br/>
+
+低于18.5：过轻 <br/>
+18.5-25：正常 <br/>
+25-28：过重 <br/>
+28-32：肥胖 <br/>
+高于32：严重肥胖 <br/>
+<p id="p0"></p>
+<script>
+    'use strict';
+
+    var height = parseFloat(prompt('请输入身高(m):'));
+    var weight = parseFloat(prompt('请输入体重(kg):'));
+    var bim = (weight/(height^2)).toFixed(1);
+    var txt =document.getElementById("p0");
+    txt.innerHTML =`BIM指数为${bim}`;
+    if(bim < 18.5){txt.innerHTML += ",低于18.5：过轻"}
+    else if(18.5 <= bim < 25){txt.innerHTML += ",18.5-25：正常"}
+    else if(25 <= bim < 28){txt.innerHTML += ",25-28：过重"}
+    else if(28 <= bim < 32){txt.innerHTML += ",28-32：肥胖"}
+    else if(32 <= bim){txt.innerHTML += ",高于32：严重肥胖"}
+//    bim < 18.5 ? 18.5 <= bim < 25 ? 25 <= bim < 28 ? 28 <= bim < 32 ? 32 <= bim ? txt.innerHTML += ",低于18.5：过轻" = txt.innerHTML += ",18.5-25：正常"
+
+</script>
+</body>
+</html>

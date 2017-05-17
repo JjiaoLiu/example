@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>数据可视化</title>
+</head>
+<body>
+<p>JSONP获取数据；canvas展示</p>
+<canvas id="stock-canvas" width="300" height="400" style="border: 1px solid #ccc; margin-top: 15px;"></canvas>
+<script>
+    'use strict';
+    var canvas = document.getElementById('stock-canvas'),
+            width = canvas.width,
+            height = canvas.height,
+            ctx = canvas.getContext('2d');
+//回调loadStockData
+    window.loadStockData = function (r) {
+        var NUMS = 30,
+            data = r.data;
+        if (data.length > NUMS) {
+            data = data.slice(data.length - NUMS);
+        }
+//        console.log(data);//[Array[7]*30];
+        //将数据与tag对应
+        data = data.map(function (x) {
+            return {
+                date: x[0],
+                open: x[1],
+                close: x[2],
+                high: x[3],
+                low: x[4],
+                vol: x[5],
+                change: x[6]
+            };
+        });
+//        console.log(data);//[Object*30]
+        window.drawStock(data);
+    };
+    window.drawStock = function (data) {
+//        console.log(JSON.stringify(data[0])); // {"date":"20150602","open":4844.7,"close":4910.53,"high":4911.57,"low":4797.55,"vol":62374809900,"change":1.69}
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillText('近30个交易日的K线图数据', 10, 15);
+
+        var OFFSET = 3700,//偏移
+                pHeight = 1,//scale
+                lWidth = 1,
+                pWidth = 8,
+                x = 5;
+        var drawLine = function(high,low,opan,close){
+            //判断涨跌
+            ctx.strokeStyle = close >= opan ? "red" : "green";
+            ctx.beginPath();
+            ctx.lineWidth = lWidth;
+            ctx.moveTo(x, (OFFSET - low) * pHeight);
+            ctx.lineTo(x, (OFFSET - high) * pHeight);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.lineWidth = pWidth;
+            ctx.moveTo(x, (OFFSET - opan) * pHeight);
+            ctx.lineTo(x, (OFFSET - close) * pHeight);
+            ctx.stroke();
+
+            //位置移动至下一天
+            x += 10;
+        };
+            for (var t of data) {
+                drawLine(t.high, t.low, t.open, t.close);
+            }
+        };
+    // 加载最近30个交易日的K线图数据:
+    var js = document.createElement('script');
+    js.src = 'http://img1.money.126.net/data/hs/kline/day/history/2015/0000001.json?callback=loadStockData&t=' + Date.now();
+//    js.src = 'http://api.money.126.net/data/feed/0000001,1399001?callback=refreshPrice';
+    document.getElementsByTagName('head')[0].appendChild(js);
+</script>
+</body>
+</html>

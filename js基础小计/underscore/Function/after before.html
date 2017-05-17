@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>
+    after:创建一个函数, 只有在运行了 count 次之后才有效果. 在处理同组异步请求返回结果时,
+    如果你要确保同组里所有异步请求完成之后才 执行这个函数, 这将非常有用。
+    _.after(count, function)
+</p>
+<p>before:创建一个函数,调用不超过count 次。
+    当count已经达到时，最后一个函数调用的结果将被记住并返回。
+    _.before(count, function)
+</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+//    var renderNotes = _.after(notes.length, render);
+//    _.each(notes, function(note) {
+//        note.asyncSave({success: renderNotes});
+//    });
+//    // renderNotes is run once, after all notes have saved.
+
+    function  askForRaise(){
+        alert("a"+1);
+    }
+    var monthlyMeeting = _.before(3, askForRaise);
+    monthlyMeeting();//a1
+    monthlyMeeting();//a1
+    monthlyMeeting();//无
+    // the result of any subsequent calls is the same as the second call
+</script>
+</body>
+</html>

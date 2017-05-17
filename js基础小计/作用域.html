@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    var _obj = {name:"li"};//scope  var _obj
+//    function a(){//scope    预处理 var _obj    console
+//      console.log(_obj);
+//      var _obj = {name:"li"};
+//      console.log(_obj.name);//gua
+//    }
+//    a();
+    function test(o){
+        var i =0;
+        if(typeof o == "object"){
+            var j = 0;
+            for(var k = 0; k<10;k++){
+                console.log(k);
+            }
+            console.log(k);
+        }
+        console.log(j);
+    }
+
+</script>
+</body>
+</html>

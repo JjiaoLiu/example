@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>without:返回一个删除所有values值后的 array副本。_.without(array, *values) </p>
+<p>union:返回传入的 arrays（数组）并集：按顺序返回，返回数组的元素是唯一的，可以传入一个或多个 arrays（数组）。</p>
+<p>intersection:返回传入 arrays（数组）交集。结果中的每个值是存在于传入的每个arrays（数组）里。</p>
+<p>difference:返回的值来自array参数数组，并且不存在于other 数组._.difference(array, *others) </p>
+<p>uniq:返回 array去重后的副本, 使用 === 做相等测试.
+    如果您确定 array 已经排序, 那么给 isSorted 参数传递 true值, 此函数将运行的更快的算法.
+    如果要处理对象元素, 传递 iteratee函数来获取要对比的属性.
+    _.uniq(array, [isSorted], [iteratee])
+</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    _.without([1, 2, 1, 0, 3, 1, 4], 0, 1);//[2, 3, 4]
+    _.union([1, 2, 3], [101, 2, 1, 10], [2, 1]);//[1, 2, 3, 101, 10]
+    _.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1]);//[1, 2]
+    _.difference([1, 2, 3, 4, 5], [5, 2, 10]);//[1, 3, 4]
+    _.uniq([1, 2, 1, 3, 1, 4]);//[1, 2, 3, 4]
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Array.prototype.slice.call</title>
+</head>
+<body>
+<p>转成数组的通用函数  ES6 Array.from</p>
+<script>
+    var toArray = function(s){
+        try{
+            return Array.prototype.slice.call(s);
+        }catch(e){
+            var arr = [];
+            for(var i = 0,len = s.length; i < len; i++){
+                arr[i] = s[i];
+            }
+            return arr;
+        }
+    };
+    var str = "123456";
+    console.log(toArray(str));
+    console.log(str.split(""));
+</script>
+</body>
+</html>

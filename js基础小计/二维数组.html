@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    var x = {name : "li"};
+//    function a{
+//        console.log(x.name);
+//        var  x = {name : "li"};
+//        console.log(x.name);
+//    }
+//    a();
+var arrSelect=new Array();
+arrSelect[0]=[ "1 ", "2 ", "3 "];
+arrSelect[1]=[ "23 ", "11 ", "31 "];
+arrSelect[2]=[ "112 ", "221 ", "312 "];
+
+var collectSelect=new Array();
+collectSelect[0]=[ "3 "];
+collectSelect[1]=[ "31 "];
+for(var i=0;i <arrSelect.length;i++){
+    var has=false;
+    for(var j=0;j <collectSelect.length;j++){//1
+        //if(arrSelect[i][2]==collectSelect[j].join( " ")){
+        if(arrSelect[i][2]==collectSelect[j][0]){
+            has=true;
+        }
+    }
+    if(!has){alert( "collectSelect里面没有: "+arrSelect[i][2]);}
+}
+
+
+</script>
+</body>
+</html>

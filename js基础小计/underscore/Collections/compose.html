@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>_.compose(*functions) 返回函数集 functions 组合后的复合函数, </p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    var greet    = function(name){ return "hi: " + name; };
+    var exclaim  = function(statement){ return statement.toUpperCase() + "!"; };
+    var welcome = _.compose(greet, exclaim);
+    welcome('moe');
+//    => 'hi: MOE!'
+</script>
+</body>
+</html>

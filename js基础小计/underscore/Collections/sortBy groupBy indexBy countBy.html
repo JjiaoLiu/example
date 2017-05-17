@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>sortBy:返回一个排序后的list拷贝副本</p>
+<p>groupBy:把一个集合分组为多个集合，通过 iterator 返回的结果进行分组. </p>
+<p>indexBy:给定一个list，和 一个用来返回一个在列表中的每个元素键 的iterator 函数（或属性名）， 返回一个每一项索引的对象。
+    和groupBy非常像，但是当你知道你的键是唯一的时候可以使用indexBy 。</p>
+<p>countBy:排序一个列表组成一个组，并且返回各组中的对象的数量的计数。
+    类似groupBy，但是不是返回列表的值，而是返回在该组中值的数目。</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    _.sortBy([1, 2, 3, 4, 5, 6], function(num){ return Math.sin(num); });
+//    => [5, 4, 6, 3, 1, 2]
+    var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+    _.sortBy(stooges, 'name');
+//    => [{name: 'curly', age: 60}, {name: 'larry', age: 50}, {name: 'moe', age: 40}];
+
+
+    _.groupBy([1.3, 2.1, 2.4], function(num){ return Math.floor(num); });
+//    => {1: [1.3], 2: [2.1, 2.4]}
+    _.groupBy(['one', 'two', 'three'], 'length');
+//    => {3: ["one", "two"], 5: ["three"]}
+
+    var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+    _.indexBy(stooges, 'age');
+//    => {
+//        "40": {name: 'moe', age: 40},
+//        "50": {name: 'larry', age: 50},
+//        "60": {name: 'curly', age: 60}
+//    }
+
+    _.countBy([1, 2, 3, 4, 5], function(num) {
+        return num % 2 == 0 ? 'even': 'odd';
+    });
+//    => {odd: 3, even: 2}
+</script>
+</body>
+</html>

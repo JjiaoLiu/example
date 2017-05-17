@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			window.onload=function fn(){
+                                // 实现5秒后跳转到首页的效果，因为这个只需要执行一次，所以用的一次性定时器而不是反复性定时器
+                                setTimeout("f5()",5000);
+                                // 每秒让数字减少一个，需要多次执行所以用的反复性定时器
+                                var time=setInterval("fun()",1000);
+                        }
+                        function f5(){
+                                location.replace("http://www.baidu.com");
+                        }
+                        function fun(){
+                                var timer = document.getElementById('time');
+                                var n=timer.innerHTML;
+                                // 这里应该加不加都可以，因为我的电脑加载有点慢，会出现负数，效果不好，加上这个循环可以解决出现负数的情况。这样就算我的电脑反应慢时间长一点也不会出现负数了。
+                                if(n<1){
+                                        clearInterval(time);
+                                }else{
+                                        timer.innerHTML=n-1;
+                                }                       
+                        }
+                        function fonclick(){
+                                location.replace("http://www.baidu.com");
+                        } 
+		</script>
+	</body>
+</html>

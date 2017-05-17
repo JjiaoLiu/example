@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        img[data-src] {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <img data-original="./img/img1" alt="" src="../img/img1.jpg" />
+    <img data-original="./img/img2" alt="" src="../img/img2.jpg" />
+    <img data-original="./img/img3" alt="" src="../img/img3.jpg" />
+    <img data-original="./img/img4" alt="" src="../img/img4.jpg" />
+    <img data-original="./img/img5" alt="" src="../img/img5.jpg" />
+    <img data-original="./img/img6" alt="" src="../img/img6.jpg" />
+    <img data-original="./img/img7" alt="" src="../img/img7.jpg" />
+    <img data-original="./img/img8" alt="" src="../img/img8.jpg" />
+    <img data-original="./img/img9" alt="" src="../img/img9.jpg" />
+    <script>
+        Array.prototype.forEach.call(document.querySelectorAll('img[data-src]'), function (img) {
+            img.setAttribute('src', img.getAttribute('data-src'));
+            img.onload = function () {
+                img.removeAttribute('data-src');
+            };
+        });
+    </script>
+</body>
+</html>

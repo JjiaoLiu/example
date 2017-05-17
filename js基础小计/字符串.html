@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var str = "asdfssaaasasasasaa";
+    alert(str.substring(4));//ssaaasasasasaa
+    //判断一个字符串中出现次数最多的字符，统计这个次数
+    var json = {};
+    for (var i = 0; i < str.length; i++) {
+//        alert(typeof (!json[str.charAt(i)]));//boolean
+        if(!json[str.charAt(i)]){
+            json[str.charAt(i)] = 1;
+        }else{
+            json[str.charAt(i)]++;
+        }
+    };
+    var iMax = 0;
+    var iIndex = '';
+    for(var i in json){
+        if(json[i]>iMax){
+            iMax = json[i];
+            iIndex = i;
+        }
+    }
+    alert('出现次数最多的是:'+iIndex+'出现'+iMax+'次');
+</script>
+</body>
+</html>

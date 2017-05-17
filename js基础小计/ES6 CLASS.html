@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    'use strict';
+
+    class Animal {
+        constructor(name) {
+            this.name = name;
+        }
+    }
+    class Cat extends Animal{
+        constructor(name){
+            super(name);
+        }
+        say(){
+            return `Hello, ${this.name}!`
+        }
+    }
+    var mimi = new Cat("小猫");
+    console.log(mimi.say());
+</script>
+</body>
+</html>
+

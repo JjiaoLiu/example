@@ -1,0 +1,27 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div style="width: 300px;height: 30px;background: yellow"></div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+
+    $("div").mouseover(function(){
+        $(this).css("background","black");
+    });
+    $("div").mouseenter(function(){
+        $(this).css("background","red");
+    });
+
+    $("div").mouseout(function(){
+        $(this).css("background","green");
+    });
+    $("div").mouseleave(function(){
+        $(this).css("background","blue");
+    });
+</script>
+</body>
+</html>

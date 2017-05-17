@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>输入值后，用jQuery获取表单的JSON字符串，key和value分别对应每个输入的name和相应的value，
+    例如：{"name":"Michael","email":...}</p>
+<form id="test-form" action="#0" onsubmit="return false;">
+    <p><label>Name: <input name="name"></label></p>
+    <p><label>Email: <input name="email"></label></p>
+    <p><label>Password: <input name="password" type="password"></label></p>
+    <p>Gender: <label><input name="gender" type="radio" value="m" checked> Male</label> <label><input name="gender" type="radio" value="f"> Female</label></p>
+    <p><label>City: <select name="city">
+        <option value="BJ" selected>Beijing</option>
+        <option value="SH">Shanghai</option>
+        <option value="CD">Chengdu</option>
+        <option value="XM">Xiamen</option>
+    </select></label></p>
+    <p><button type="button">Submit</button></p>
+</form>
+<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    'use strict';
+    var json = null;
+    $("button").click(function(){
+        json ='{'+ $("form").serializeArray().map(function(x){
+            return x.name +":"+ x.value;
+        })+'}';
+        console.log(json);//{name:ssss,email:ssss,password:s,gender:m,city:BJ}
+    });
+</script>
+</body>
+</html>

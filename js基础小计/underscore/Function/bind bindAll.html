@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>bind:_.bind(function, object, *arguments) </p>
+<p>bindAll:_.bindAll(object, *methodNames)
+    把methodNames参数指定的一些方法绑定到object上，这些方法就会在对象的上下文环境中执行。 </p>
+<button id="underscore_button">button</button>
+
+<script src="http://underscorejs.org/underscore.js"></script>
+<script src="http://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
+<script>
+    var func = function(greeting){ return greeting + ': ' + this.name };
+    func = _.bind(func, {name: 'moe'}, 'hi');
+    func();
+//    => 'hi: moe'
+
+
+    var buttonView = {
+        label  : 'underscore',
+        onClick: function(){ alert('clicked: ' + this.label); },
+        onHover: function(){ console.log('hovering: ' + this.label); }
+    };
+    _.bindAll(buttonView, 'onClick', 'onHover');
+    // When the button is clicked, this.label will have the correct value.
+    jQuery('#underscore_button').bind('click', buttonView.onClick);
+</script>
+</body>
+</html>

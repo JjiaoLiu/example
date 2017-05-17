@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>_.delay(function, wait, *arguments) 等待wait毫秒后调用function </p>
+<p>_.defer(function, *arguments)  延迟调用function直到当前调用栈清空为止</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    var log = _.bind(console.log, console);
+    _.delay(log, 1000, 'logged later');
+   //'logged later'
+    _.defer(function(){ alert('deferred'); });
+</script>
+</body>
+</html>

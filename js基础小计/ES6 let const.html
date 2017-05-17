@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>const与let都具有块级作用域</p>
+<script>
+    'use strict';
+    function foo() {
+        var sum = 0;
+        for (let i=0; i<100; i++) {
+            sum += i;
+        }
+        i += 1; // SyntaxError//解决块级作用域
+    }
+    const PI = 3.14;//定义常量
+    PI = 3; // 某些浏览器不报错，但是无效果！
+    PI; // 3.14
+</script>
+</body>
+</html>

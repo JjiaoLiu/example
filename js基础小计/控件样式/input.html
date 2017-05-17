@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul {
+            list-style: none;
+            -webkit-margin-after: 0;
+            -webkit-margin-before: 0;
+            -webkit-padding-start: 0px;
+        }
+
+        /*下拉控件*/
+        .container .select {
+            width: 300px;
+            height: 40px;
+            font-size: 14px;
+            background-color: #fff;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .container .select:after {
+            content: '';
+            display: block;
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            border-left: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            /*-webkit-transform: rotate(45deg);*/
+            transform: rotate(-45deg);
+            transition: transform .3s ease-in, top .3s ease-in;
+        }
+
+        .container .select p, .container .select ul li {
+            padding: 0 15px;
+            line-height: 40px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+        }
+
+        .container .select ul li{
+            border-top:0
+        }
+
+        .container .select ul {
+            width: 100%;
+            overflow-y: hidden;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            max-height: 0;
+            transition: max-height .3s ease-in;
+        }
+
+        .container .select.active ul {
+            max-height: 300px;
+            transform-origin: 50% 0%;
+            animation: slide-down .5s ease-in;
+        }
+
+        .container .select.active:after {
+            transform: rotate(-225deg);
+            top: 18px;
+        }
+
+        .container .select ul li:hover, .container .select ul li.selected {
+            background-color: #e0e0e0;
+        }
+
+        @keyframes slide-down {
+            0%{
+                transform: scale(1,0);
+            }
+            25%{
+                transform: scale(1,1.1);
+            }
+            75%{
+                transform: scale(1,1.05);
+            }
+            100%{
+                transform: scale(1,1);
+            }
+        }
+    </style>
+</head>
+<body>
+<!--下拉控件-->
+<div class="container">
+    <div class="select">
+        <p>所有选项</p>
+        <ul>
+            <li class="selected" data-value="所有选项">所有选项</li>
+            <li data-value="Python">Python</li>
+            <li data-value="Javascript">Javascript</li>
+            <li data-value="Java">Java</li>
+            <li data-value="Ruby">Ruby</li>
+        </ul>
+    </div>
+</div>
+<script>
+    function addEventHandler(target, type, func) {
+        if (target.addEventListener) {    //监听IE9，谷歌和火狐
+            target.addEventListener(type, func, false);
+        } else if (target.attachEvent) {
+            target.attachEvent("on" + type, func);
+        } else {
+            target["on" + type] = func;
+        }
+    }
+    var $select = document.getElementsByClassName("select")[0];
+    addEventHandler($select,'click',function(){
+        this.classList.toggle("active");
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>_.once(function) </p>
+<button>button1</button>
+<button>button2</button>
+<script src="http://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    var register = _.once(function () {
+        alert('Register ok!');
+    });
+    var _click = _.once(register);
+    $("button").click(function(){
+        register();
+    })
+</script>
+</body>
+</html>

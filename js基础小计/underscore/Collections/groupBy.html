@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    'use strict';
+    var scores = [20, 81, 75, 40, 91, 59, 77, 66, 72, 88, 99];
+    var groups = _.groupBy(scores, function (x) {
+        if (x < 60) {
+            return 'C';
+        } else if (x < 80) {
+            return 'B';
+        } else {
+            return 'A';
+        }
+    });
+    // 结果:
+    // {
+    //   A: [81, 91, 88, 99],
+    //   B: [75, 77, 66, 72],
+    //   C: [20, 40, 59]
+    // }
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>把list(任何可以迭代的对象)转换成一个数组，在转换 arguments 对象时非常有用。</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    (function(){ return _.toArray(arguments).slice(1); })(1, 2, 3, 4);
+//=> [2, 3, 4]
+</script>
+</body>
+</html>

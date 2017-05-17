@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>_.negate(predicate)返回一个新的predicate函数的否定版本。</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    var isFalsy = _.negate(Boolean);
+    _.find([-2, -1, 0, 1, 2], isFalsy);
+//   0
+</script>
+</body>
+</html>

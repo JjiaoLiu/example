@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body background="../yuyuebg.png">
+<i></i>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    var num;
+    var arr =["十","九","八","七","六","五","四","三","二","一"];
+    $("i").html(arr[0]);
+    var timer = null;
+    var i = 0;
+    timer = setInterval(function(){
+        i++;
+        $("i").html(arr[i]);
+        if(i <= 0){
+            $("body").fadeOut();
+        }
+    },1000)
+</script>
+</body>
+</html>

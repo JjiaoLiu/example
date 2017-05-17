@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button class="btn">点击</button>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    $(".btn").click(function() { var json = [ { "S_Name": "周颜", "S_Sex": "男" }, { "S_Name": "周颖", "S_Sex": "女" } ];
+        $.each(json, function(index, s) { alert(s.S_Name + "," + s.S_Sex) });});
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流布局(图片等宽不等高)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        #main {
+            position: relative
+        }
+
+        .box {
+            padding: 2% 0 0 2%;
+            width: 25%;
+            float: left
+        }
+
+        .pic {
+            padding: 3%;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 5px #ccc;
+        }
+
+        .pic img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img5.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img6.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img7.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img8.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img9.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img2.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img1.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img3.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img3.jpg" alt=""/>
+        </div>
+    </div>
+</div>
+<script src="./jquery-3.1.1.js"></script>
+<script>
+    $(window).on('load', function () {
+        var dateInt = {"data":[{"src": "./../img/img10.jpg"}]};
+        waterfall();
+        $(window).on('scroll', function () {
+            if (checkSrollSlide) {
+                $.each(dateInt.data,function (key, value) {
+                        var oBox = $("<div>").addClass("box").appendTo($("#main"))
+                            , oPic = $("<div>").addClass("pic").appendTo($(oBox));
+                        $('<img>').attr('src', $(value).attr("src")).appendTo($(oPic));
+                    }
+                );
+                waterfall();
+            }
+
+        })
+    });
+    function waterfall() {
+        var $boxs = $("#main > div"),
+            w = $boxs.first().outerWidth()
+            , cols = Math.floor($(window).width() / w);
+        $("#main").outerWidth(cols * w).css("margin", "0 auto");
+        var hArr = [];
+        $boxs.each(function (index, value) {
+            var h = $boxs.eq(index).outerHeight();
+            if (index < cols) {
+                hArr[index] = h;
+            } else {
+                var minH = Math.min.apply(null, hArr)//获取hArr中的最小值
+                    , minHIndex = $.inArray(minH, hArr);//获取hArr中的最小值的index
+                $(value).css({
+                    'position': 'absolute',
+                    'top': minH + "px",//将下一个元素放到最低元素的后边
+                    'left': minHIndex * w + "px"
+                });
+                hArr[minHIndex] += $boxs.eq(index).outerHeight();//设置新的最低值
+            }
+        })
+    }
+    function checkSrollSlide() {
+        var $lastBox = $('#main > div').last(),
+            lastBoxDis = $lastBox.offset().top + Math.floor($lastBox.height() / 2)
+            , scrollTop = $(window).scrollTop()
+            , documentH = $(window).height();
+        return (lastBoxDis < scrollTop + documentH ? true : false)
+    }
+</script>
+</body>
+</html>

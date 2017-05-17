@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p id="results"><b>Results:</b> </p>
+<form>
+    <div><input type="text" name="a" value="1" id="a" /></div>
+    <div><input type="text" name="b" value="2" id="b" /></div>
+    <div><input type="hidden" name="c" value="3" id="c" /></div>
+    <div>
+        <textarea name="d" rows="8" cols="40">4</textarea>
+    </div>
+    <div><select name="e">
+        <option value="5" selected="selected">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+    </select></div>
+    <div>
+        <input type="checkbox" name="f" value="8" id="f" />
+    </div>
+    <div>
+        <input type="submit" name="g" value="Submit" id="g" />
+    </div>
+</form>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    $('form').submit(function() {
+        console.log($(this).serialize());
+        console.log($(this).serializeArray());
+        return false;
+    });
+</script>
+</body>
+</html>

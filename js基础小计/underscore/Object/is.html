@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>
+    _.isEqual(object, other)
+    执行两个对象之间的优化深度比较，确定他们是否应被视为相等。
+</p>
+<p>
+    _.isMatch(object, properties)
+    告诉你properties中的键和值是否包含在object中。
+</p>
+<p>
+    _.isEmpty(object)
+    如果object 不包含任何值(没有可枚举的属性)，返回true。
+    对于字符串和类数组（array-like）对象，如果length属性为0，那么_.isEmpty检查返回true。
+</p>
+<p>
+    _.isElement(object)
+    如果object是一个DOM元素，返回true。
+</p>
+<p>
+    _.isArray(object)
+    如果object是一个数组，返回true。
+</p>
+<p>
+    _.isObject(value)
+    如果object是一个对象，返回true。
+    需要注意的是JavaScript数组和函数是对象，字符串和数字不是。
+</p>
+<p>
+    _.isArguments(object)
+    如果object是一个参数对象，返回true。
+</p>
+<p>
+    _.isFunction(object)
+    如果object是一个函数（Function），返回true。
+</p>
+<p>
+    _.isString(object)
+    如果object是一个字符串，返回true。
+</p>
+<p>
+    _.isNumber(object)
+    如果object是一个数值，返回true (包括 NaN)。
+</p>
+<p>
+    _.isFinite(object)
+    如果object是一个有限的数字，返回true。
+</p>
+<p>
+    _.isBoolean(object)
+    如果object是一个布尔值，返回true，否则返回false。
+</p>
+
+<p>
+    isDate_.isDate(object)
+    Returns true if object is a Date.
+</p>
+<p>
+    _.isRegExp(object)
+    如果object是一个正则表达式，返回true。
+</p>
+<p>
+    _.isError(object)
+    如果object继承至 Error 对象，那么返回 true。
+</p>
+<p>
+    _.isNaN(object)
+    如果object是 NaN，返回true。
+    注意： 这和原生的isNaN 函数不一样，如果变量是undefined，
+    原生的isNaN 函数也会返回 true 。
+</p>
+<p>
+    _.isNull(object)
+    如果object的值是 null，返回true。
+</p>
+<p>
+    _.isUndefined(value)
+    如果value是undefined，返回true。
+</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    var stooge = {name: 'moe', luckyNumbers: [13, 27, 34]};
+    var clone  = {name: 'moe', luckyNumbers: [13, 27, 34]};
+    stooge == clone;
+    // false
+    _.isEqual(stooge, clone);
+    // true
+
+    var stooge = {name: 'moe', age: 32};
+    _.isMatch(stooge, {age: 32});
+    // true
+
+
+    _.isEmpty([1, 2, 3]);
+    // false
+    _.isEmpty({});
+    // true
+
+
+    _.isElement(jQuery('body')[0]);
+    // true
+
+    _.isObject({});
+    // true
+    _.isObject(1);
+    // false
+
+
+    (function(){ return _.isArguments(arguments); })(1, 2, 3);
+    // true
+    _.isArguments([1,2,3]);
+    // false
+
+
+    _.isFunction(alert);
+    // true
+
+    _.isString("moe");
+    // true
+
+
+    _.isNumber(8.4 * 5);
+    // true
+
+
+    _.isFinite(-101);
+    // true
+    _.isFinite(-Infinity);
+    // false
+
+    _.isBoolean(null);
+    // false
+
+    _.isDate(new Date());
+     //true
+
+    _.isRegExp(/moe/);
+    // true
+
+    try {
+        throw new TypeError("Example");
+    } catch (o_O) {
+        _.isError(o_O)
+    }
+    // true
+
+
+    _.isNaN(NaN);
+    // true
+    isNaN(undefined);
+    // true
+    _.isNaN(undefined);
+    // false
+
+
+    _.isNull(null);
+    // true
+    _.isNull(undefined);
+    // false
+
+    _.isUndefined(window.missingVariable);
+    // true
+</script>
+</body>
+</html>

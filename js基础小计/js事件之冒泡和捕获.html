@@ -1,0 +1,43 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<p>1.事件冒泡（的过程）：事件从发生的目标（event.srcElement||event.target）开始，沿着文档逐层向上冒泡，到document为止。<br/>
+    事件捕获（的过程）：则是从document开始，沿着文档树向下，直到事件目标为止。<br/>
+    在IE浏览器中，只发生事件冒泡的过程;在W3c（或支持事件捕获的）浏览器中，先发生捕获的过程，再发生冒泡的过程。<br/>
+</p>
+<p>2.事件的传播是可以阻止的： <br/>
+    • 在W3c中，使用stopPropagation()方法 <br/>
+    • 在IE下设置cancelBubble = true；
+    在捕获的过程中stopPropagation();后，后面的冒泡过程也不会发生了
+</p>
+<p>3.阻止事件的默认行为，例如click a 后的跳转
+    • 在W3c中，使用preventDefault（）方法；
+    • 在IE下设置window.event.returnValue = false;
+</p>
+<script>
+    document.write("<div id='o' style='width: 400px; height: 400px;border: 1px solid #CCCCCC'><div id='m' style='width: 200px; height: 200px;border: 1px solid #CCCCCC;'><div id='i' style='width: 100px;height: 100px;border: 1px solid #CCCCCC;'></div></div></div>");
+    function $(id){
+        return document.getElementById(id);
+    }
+    function altin(){
+        alert("in");
+        event.stopPropagation();
+    }
+    function altmiddle(){
+         alert("middle");
+        event.stopPropagation();
+     }
+     function altout(){
+         alert("out");
+         event.stopPropagation();
+     }
+    $('o').onclick = altout;
+    $('m').onclick = altmiddle;
+    $('i').onclick = altin;
+</script>
+</body>
+</html>

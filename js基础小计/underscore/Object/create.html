@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>
+    _.create(prototype, props)
+    创建具有给定原型的新对象， 可选附加props 作为 own的属性。
+</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    function Stooge(name) {
+        this.name = name;
+    }
+    var Moe = new Stooge("naruto");
+    var moe = _.create(Stooge.prototype, {age: "30"});
+    var Moe = new Stooge("naruto");
+    console.log(moe.age);//30
+    console.log(moe.name);//undefined
+    console.log(Moe.age);//undefined
+    console.log(Moe.name);//naruto
+</script>
+</body>
+</html>

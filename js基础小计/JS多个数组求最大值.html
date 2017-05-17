@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JS 不定函数参数argument</title>
+</head>
+<body>
+<script>
+    function arg1(){
+//        var str = '总共传了'+arguments.length+'个参数\n';
+        var _arr = [];
+        for(var i=0;i<arguments.length;i++){
+//            str += '第'+(i+1)+'个参数值：'+arguments[i]+'\n';
+            _arr.push(Math.max.apply(null,arguments[i]));
+        }//
+//        alert(str);
+        alert(Math.max.apply(null,_arr));
+    }
+    function arg2(arr){
+        var _arr = arr.join(",").split(",");
+        alert(Math.max.apply(null,_arr));//最大值
+    }
+//    多个数组比较大小
+    arg1([1,2,3,4,5],[3,4,5,6,7,8],[10,11,12,13]);//形参是多个数组
+    arg2([[1,2,3,4,5],[3,4,5,6,7,8],[10,11,12,13]]);//形参是一个多维数组
+//    var a=[[1,2,3,4,5],[3,4,5,6,7,8],[10,11,12,13]];
+//    var ta=a.join(",").split(",");//转化为一维数组
+//    alert(ta);
+//    alert(Math.max.apply(null,ta));//最大值
+//    alert(Math.min.apply(null,ta));//最小值
+</script>
+</body>
+</html>

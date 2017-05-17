@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>
+    _.wrap(function, wrapper)
+    将第一个函数 function 封装到函数 wrapper 里面, 并把函数 function 作为第一个参数传给 wrapper.
+    这样可以让 wrapper 在 function 运行之前和之后 执行代码, 调整参数然后附有条件地执行.
+</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    var hello = function(name) { return "hello: " + name; };
+    hello = _.wrap(hello, function(func) {
+        return "before, " + func("moe") + ", after";
+    });
+    hello();
+//    'before, hello: moe, after'
+</script>
+</body>
+</html>

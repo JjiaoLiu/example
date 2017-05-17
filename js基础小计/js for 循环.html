@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>利用for循环计算1 * 2 * 3 * ... * 10的结果</p>
+<p>请利用循环遍历数组中的每个名字，并显示Hello, xxx!</p>
+<script>
+    'use strict';
+    var result = 1,num = 1;
+    for(;num <=10;num++){
+        result = num * result;
+    }
+//    alert(result);
+    var arr = ['Bart', 'Lisa', 'Adam'];
+    for ( var key in arr){
+        alert("hello "+arr[key]);
+    }
+</script>
+</body>
+</html>

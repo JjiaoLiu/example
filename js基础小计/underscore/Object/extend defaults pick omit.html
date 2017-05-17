@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>_.extend(destination, *sources)
+    复制source对象中的所有属性覆盖到destination对象上，并且返回 destination 对象.
+    复制是按顺序的, 所以后面的对象属性会把前面的对象属性覆盖掉(如果有重复).
+</p>
+<p>
+    _.defaults(object, *defaults)
+    用defaults对象填充object 中的undefined属性。
+</p>
+<p>
+    _.pick(object, *keys)
+    返回一个object副本，只过滤出keys(有效的键组成的数组)参数指定的属性值。
+    或者接受一个判断函数，指定挑选哪个key。
+</p>
+<p>
+    _.omit(object, *keys)
+    返回一个object副本，只过滤出除去keys(有效的键组成的数组)参数指定的属性值。
+    或者接受一个判断函数，指定忽略哪个key。
+</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    _.extend({name: 'moe'}, {age: 50});
+    //{name: 'moe', age: 50}
+
+    var iceCream = {flavor: "chocolate"};
+    _.defaults(iceCream, {flavor: "vanilla", sprinkles: "lots"});
+    //{flavor: "chocolate", sprinkles: "lots"}
+
+
+    _.pick({name: 'moe', age: 50, userid: 'moe1'}, 'name', 'age');
+   //{name: 'moe', age: 50}
+    _.pick({name: 'moe', age: 50, userid: 'moe1'}, function(value, key, object) {
+        return _.isNumber(value);
+    });
+    // {age: 50}
+
+
+    _.omit({name: 'moe', age: 50, userid: 'moe1'}, 'userid');
+   //{name: 'moe', age: 50}
+    _.omit({name: 'moe', age: 50, userid: 'moe1'}, function(value, key, object) {
+        return _.isNumber(value);
+    });
+    // {name: 'moe', userid: 'moe1'}
+</script>
+</body>
+</html>

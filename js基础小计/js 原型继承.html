@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>
+    JavaScript的原型继承实现方式就是： <br/>
+
+    定义新的构造函数，并在内部用call()调用希望“继承”的构造函数，并绑定this； <br/>
+
+    借助中间函数F实现原型链继承，最好通过封装的inherits函数完成； <br/>
+
+    继续在新的构造函数的原型上定义新方法。 <br/>
+</p>
+<script>
+    function inherits(Child, Parent) {
+        var F = function () {};
+        F.prototype = Parent.prototype;
+        Child.prototype = new F();
+        Child.prototype.constructor = Child;
+    }
+    function Student(props) {
+        this.name = props.name || 'Unnamed';
+    }
+
+    Student.prototype.hello = function () {
+        alert('Hello, ' + this.name + '!');
+    };
+
+    function PrimaryStudent(props) {
+        Student.call(this, props);
+        this.grade = props.grade || 1;
+    }
+
+    // 实现原型继承链:
+    inherits(PrimaryStudent, Student);
+
+    // 绑定其他方法到PrimaryStudent原型:
+    PrimaryStudent.prototype.getGrade = function () {
+        return this.grade;
+    };
+</script>
+</body>
+</html>

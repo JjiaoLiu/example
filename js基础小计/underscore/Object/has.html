@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>
+    _.has(object, key);
+    等同于object.hasOwnProperty(key)，但是使用hasOwnProperty 函数的一个安全引用，以防意外覆盖。
+</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+
+    _.has({a: 1, b: 2, c: 3}, "b");//true
+</script>
+</body>
+</html>

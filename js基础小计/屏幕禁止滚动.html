@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>禁用浏览器滚动条</title>
+    <style>
+        #objDiv{background: rgba(0,0,0,0.6);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);position: fixed;top: 0px;left: 0px }
+    </style>
+</head>
+<body style="height: 3000px">
+<button>显示弹框</button>
+<div id="objDiv" style="display: none">
+</div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    var winHeight = $(window).height();
+    var winWidth = $(window).width();
+    $("#objDiv").css({"height":winHeight,"width":winWidth});
+    $("button").click(function(){
+        $("#objDiv").css("display","block");
+        var scrollFunc=function(e){
+            e=e||window.event;
+            if (e && e.preventDefault){
+                e.preventDefault();
+                e.stopPropagation();
+            }else{
+                e.returnvalue=false;
+                return false;
+            }
+        }
+        if(window.addEventListener){
+            window.addEventListener('DOMMouseScroll',scrollFunc,false);
+            window.addEventListener('mousewheel',scrollFunc,false);
+        }
+        else{
+            window.onmousewheel=scrollFunc;
+        }
+    })
+</script>
+</body>
+</html>

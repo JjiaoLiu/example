@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>练习：在新生欢迎会上，你已经拿到了新同学的名单，请排序后显示：欢迎XXX，XXX，XXX和XXX同学！</title>
+</head>
+<body>
+<script>
+    'use strict';
+    var arr = ['小明', '小红', '大军', '阿黄'];
+    arr.sort();
+    alert('欢迎'+arr.slice(0,length-1).join(",")+'和'+arr[arr.length-1]+'同学！');
+    alert(`欢迎${arr.slice(0,length-1).join(",")}和${arr.slice(length-1)}同学`);//ES6
+</script>
+</body>
+</html>
+

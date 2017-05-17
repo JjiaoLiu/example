@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body style="height: 3000px">
+<p>_.throttle(function, wait, [options]) 当重复调用函数的时候，至少每隔 wait毫秒调用一次该函数</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script src="http://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
+<script>
+    function updatePosition(){
+        console.log($(window).scrollTop());
+    }
+    var throttled = _.throttle(updatePosition, 1000);
+    $(window).scroll(throttled);
+</script>
+</body>
+</html>

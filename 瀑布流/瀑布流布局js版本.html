@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流布局(图片等宽不等高)</title>
+    <style>
+        *{margin: 0;padding: 0;box-sizing: border-box}
+        #main{position: relative}
+        .box{padding: 2% 0 0 2%;float: left;width:32%}
+        .pic{padding: 3%;borer:1px solid #000;border: 5px;box-shadow: 0 0 5px #ccc;}
+        .pic img{width: 100%;}
+    </style>
+</head>
+<body>
+<div id="main">
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img1.jpg" alt="" />
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img2.jpg" alt="" />
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img3.jpg" alt="" />
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img4.jpg" alt="" />
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img5.jpg" alt="" />
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img6.jpg" alt="" />
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img7.jpg" alt="" />
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img8.jpg" alt="" />
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img9.jpg" alt="" />
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img10.jpg" alt="" />
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img5.jpg" alt="" />
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img4.jpg" alt="" />
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img3.jpg" alt="" />
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img2.jpg" alt="" />
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="./../img/img1.jpg" alt="" />
+        </div>
+    </div>
+</div>
+<script>
+    window.onload=function(){
+        waterfall("main","box");
+//        var dateInt={"data":[{"src":"0.jpg"}]};
+//        window.onscroll(function(){
+//            if(checkScrollSlide){
+//                //将数据块渲染到页面的尾部
+//                var oParent=document.getElementById('main');
+//                for(var i=0;i<dateInt.data.length;i++){
+//                    var oBox=document.createElement('div');
+//                    oBox.className="box";
+//                    oParent.appendChild(oBox);
+//                    oPic=document.createElement('div');
+//                    oPic.className="pic";
+//                    oBox.appendChild(oPic);
+//                    oImg=document.createElement('img');
+//                    oImg.src="images/"+dateInt.data[i].src;
+//                    oPic.appendChild(oImg);
+//                }
+//                waterfall("main","box");
+//            }
+//        })
+    };
+    function waterfall(parent,box){
+//        将main下的class为box的元素取出来
+        var oParent=document.getElementById(parent);
+        var oBoxs = getByClass(oParent,box);//获取main下一级标签为box的元素集合
+        var oBoxW=oBoxs[0].offsetWidth;//JS中是获区元素的宽
+        var cols=Math.floor(document.documentElement.clientWidth/oBoxW);//计算整个页面显示的列数
+        oParent.style.cssText='width'+oBoxW*cols+'px;margin:0 auto';//设置Oparent的宽
+        var hArr=[];
+        for(var i=0;i<oBoxs.length;i++){
+            if(i<cols){
+                hArr.push(oBoxs[i].offsetHeight);//获取第一排的高
+            }
+            else{
+                var minH=Math.min.apply(null,hArr);
+                var index=getMinhIndex(hArr,minH);//获取最小值的索引
+                oBoxs[i].style.position='absolute';
+                oBoxs[i].style.left=oBoxs[index].offsetLeft+'px';
+                oBoxs[i].style.top=minH+'px';
+                hArr[index]+=oBoxs[i].offsetHeight;//重新设置hArr数组的最小值
+            }
+        }
+    }
+    function getMinhIndex(arr,val){
+        for(var i in arr){
+            if(arr[i]==val){
+                return i;
+            }
+        }
+    }
+    //根据class获取元素
+    function getByClass(parent,clsName){
+        var boxArr = new Array(),oElements =parent.getElementsByTagName("*");//获取父元素下所有的一级标签
+        for(var i =0;i<oElements.length;i++){
+            if(oElements[i].className==clsName){//如果标签名为clsName
+                boxArr.push(oElements[i]);//将这个标签加入数组boxArr中
+            }
+        }
+        return boxArr;
+    }
+    //判断是否具备了加载数据块的条件
+    function checkScrollSlide(){
+        var oParent=document.getElementById('main');
+        var oBoxs=getByClass(oParent,"box");
+        var lastBoxH=oBoxs[oBoxs.length-1].offsetTop+Math.floor(oBoxs[oBoxs.length-1].offsetHeight/2);
+        var scrollTop=document.body.scrollTop|| document.documentElement.scrollTop;
+        var height=document.body.clientHeight||document.documentElement.clientHeight;
+        return (lastBoxH<scrollTop+height)?true:false;
+    }
+</script>
+</body>
+</html>

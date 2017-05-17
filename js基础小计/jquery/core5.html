@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+<script>
+    jQuery.noConflict();//返回jQuery
+</script>
+<script src="//cdn.bootcss.com/zepto/1.2.0/zepto.js"></script>
+<script>
+    $("body").css("background","red");
+    setTimeout(function(){
+        jQuery("body").css("background","blue");
+    },3000);
+    jQuery.noConflict();
+    setTimeout(function(){
+        $("body").css("background","green");
+    },3000);
+    var j = jQuery.noConflict();
+    j("body").css("background","yellow");
+
+</script>
+</body>
+</html>

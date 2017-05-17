@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>只在函数内部起作用，并且永远指向当前函数的调用者传入的所有参数</p>
+<p>利用arguments，你可以获得调用者传入的所有参数。也就是说，即使函数不定义任何参数，还是可以拿到参数的值</p>
+<p>arguments最常用于判断传入参数的个数</p>
+<br/>
+<br/>
+<br/>
+<script>
+    // foo(a[, b], c)
+    // 接收2~3个参数，b是可选参数，如果只传2个参数，b默认为null：
+    function foo(a, b, c) {
+        if (arguments.length === 2) {
+            // 实际拿到的参数是a和b，c为undefined
+            c = b; // 把b赋给c
+            b = null; // b变为默认值
+        }
+        // ...
+    }
+//    要把中间的参数b变为“可选”参数，就只能通过arguments判断，然后重新调整参数并赋值。
+
+</script>
+</body>
+</html>

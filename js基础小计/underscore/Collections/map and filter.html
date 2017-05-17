@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>_.map</title>
+</head>
+<body>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    var map1 = _.map([1,2,3],(x) => x*x);
+    var map2 = _.map({a:1,b:2,c:3},(x,y) => `${y}=${x}`);
+    console.log(map1);
+    console.log(map2);
+    var obj = {
+        name: 'bob',
+        school: 'No.1 middle school',
+        address: 'xueyuan road'
+    };
+    var upper = _.map(obj,(value, key) => `${key} : ${value.toUpperCase()}`);//返回数组
+    console.log(upper);
+    var fir = _.map([[1, 2], [3, 4]], _.first);
+    console.log(fir);//[1, 3]
+</script>
+</body>
+</html>

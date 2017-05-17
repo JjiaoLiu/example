@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>flatten:将一个嵌套多层的数组 array（数组） (嵌套可以是任何层数)转换为只有一层的数组。</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    _.flatten([1, [2], [3, [[4]]]]);//[1, 2, 3, 4];
+    _.flatten([1, [2], [3, [[4]]]], true);//[1, 2, 3, [[4]]];
+</script>
+</body>
+</html>

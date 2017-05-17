@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>
+    返回与传入参数相等的值. 相当于数学里的: f(x) = x
+    这个函数看似无用, 但是在Underscore里被用作默认的迭代器iterator.
+</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    var stooge = {name: 'moe'};
+    stooge === _.identity(stooge);
+    // true
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+find:在list中逐项查找，返回第一个通过predicate迭代函数真值检测的元素值， <br/>
+如果没有值传递给测试迭代器将返回undefined。 <br/>
+如果找到匹配的元素，函数将立即返回，不会遍历整个list。 <br/>
+filter:遍历list中的每个值，返回包含所有通过predicate真值检测的元素值。
+（愚人码头注：如果存在原生filter方法，则用原生的filter方法。） <br/>
+reject:返回list中没有通过predicate真值检测的元素集合，与filter相反。
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+//    _.find(list, predicate, [context])
+var even = _.find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+var evens = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+var odds = _.reject([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+</script>
+</body>
+</html>

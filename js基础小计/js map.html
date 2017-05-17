@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>将一个函数作用到数组中</p>
+<script>
+    function pow(x) {
+        return x * x;
+    }
+    var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    arr.map(pow); // [1, 4, 9, 16, 25, 36, 49, 64, 81]
+    arr.map(String); // ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+    //规范英文名字，变为首字母大写，其他小写
+    var arr1 = ['adam', 'LISA', 'barT'];
+    function normalize(y){
+        return y.substring(0,1).toUpperCase().concat(y.substring(1).toLowerCase())
+    }
+//    alert(arr1[0].slice(0,1).toUpperCase().concat(arr1[0].slice(1,arr1[0].length).toLowerCase()));
+    console.log(arr1.map(normalize))
+</script>
+</body>
+</html>

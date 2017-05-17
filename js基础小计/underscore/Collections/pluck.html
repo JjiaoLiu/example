@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>pluck也许是map最常使用的用例模型的简化版本，即萃取数组对象中某属性值，返回一个数组。</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+    _.pluck(stooges, 'name');
+//    => ["moe", "larry", "curly"]
+</script>
+</body>
+</html>

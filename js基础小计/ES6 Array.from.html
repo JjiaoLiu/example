@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script>
+//    将NodeList 转化成 Array
+    var divs = Array.from(document.querySelectorAll('div'));
+    console.log(divs);
+//    将 arguments 转化成 Array
+    function something() {
+        var args = Array.from(arguments);
+        return args;
+        // Array['yes', 1, {}]
+    }
+    console.log(something('yes', 1, {}));
+//    将 String 转化成 Array
+    console.log(Array.from('JavaScript')); // 很像'JavaScript'.split('')
+    // ["J", "a", "v", "a", "S", "c", "r", "i", "p", "t"]
+
+
+</script>
+</body>
+</html>

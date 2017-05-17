@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>zip:将 每个arrays中相应位置的值合并在一起。</p>
+<p>unzip:与zip功能相反的函数，给定若干arrays，返回一串联的新数组，其第一元素个包含所有的输入数组的第一元素，其第二包含了所有的第二元素，依此类推。
+    通过apply用于传递数组的数组。 </p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    _.zip(['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]);
+//    [["moe", 30, true], ["larry", 40, false], ["curly", 50, false]]
+    _.unzip([['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]]);
+//    ["moe", 30, true], ["larry", 40, false], ["curly", 50, false]
+</script>
+</body>
+</html>

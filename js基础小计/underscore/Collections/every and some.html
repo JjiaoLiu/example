@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>_.map</title>
+</head>
+<body>
+<p>当集合的所有元素都满足条件时，_.every()函数返回true，
+    当集合的至少一个元素满足条件时，_.some()函数返回true：</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    'use strict';
+    // 所有元素都大于0？
+    var s1 = _.every([1, 4, 7, -3, -9], (x) => x > 0); // false
+    // 至少一个元素大于0？
+    var s2 = _.some([1, 4, 7, -3, -9], (x) => x > 0); // true
+
+    var obj = {
+        name: 'bob',
+        school: 'No.1 middle school',
+        address: 'xueyuan road'
+    };
+    // 判断key和value是否全部是小写：
+    var r1 = _.every(obj, function (value) {
+        return _.every(value.split(","),(x) => x > "Z");
+    });
+    console.log(r1);
+    var r2 = _.some(obj, function ( key) {
+        return _.every(key.split(","),(x) => x > "Z");
+    });
+    console.log(r2);
+    console.log(s2);
+    console.log(s1);
+
+</script>
+</body>
+</html>

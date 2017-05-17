@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>object:将数组转换为对象。_.object(list, [values])
+    传递任何一个单独[key, value]对的列表，或者一个键的列表和一个值得列表。
+    如果存在重复键，最后一个值将被返回。</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    _.object(['moe', 'larry', 'curly'], [30, 40, 50]);
+    //{moe: 30, larry: 40, curly: 50}
+    _.object([['moe', 30], ['larry', 40], ['curly', 50]]);
+    //{moe: 30, larry: 40, curly: 50}
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>New Web Project</title>
+    <style>
+        #div1{
+            width:100px;
+            height:150px;
+            background: red;
+            border:1px solid #008000;
+            right:0px;
+            position: absolute;
+        }
+
+    </style>
+    <script>
+        window.onload=function(){
+            var oDiv=document.getElementById('div1');
+            //var oDiv1=document.getElementById('div2');
+            var timer=null;
+            oDiv.style.top=(document.documentElement.clientHeight-oDiv.offsetHeight)/2+document.documentElement.scrollTop+'px';
+            window.onscroll=function(){
+                var scrolltop=document.documentElement.scrollTop || document.body.scrollTop;
+                var iTarget=(document.documentElement.clientHeight-oDiv.offsetHeight)/2+scrolltop;
+                iTarget=Math.floor(iTarget);
+                startMove(iTarget);
+
+            };
+            function startMove(itarget){
+
+                clearInterval(timer);
+                timer=setInterval(function(){
+                    var iDis=itarget-oDiv.offsetTop;
+                    var speed=iDis/5;
+                    if(iDis>=0){
+                        speed=Math.ceil(speed);//当speed为小于1的数时，将它变为1，从而使元素位置移动一个像素，因为小于1的像素会被近似为0
+                    }
+                    else{
+                        speed=Math.floor(speed);
+                    }
+                    if(oDiv.offsetTop==itarget)
+                    {
+                        clearInterval(timer);
+                    }
+                    else
+                    {
+                        oDiv.style.top=oDiv.offsetTop+speed+'px';
+                    }
+                    document.title=oDiv.offsetTop;
+                },30);
+            }
+        };
+    </script>
+</head>
+<body style="height:2000px;">
+<div id="div1">
+</div>
+</body>
+</html>  

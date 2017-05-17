@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>RegExp</p>
+<pre>
+    var re1 = /ABC\-001/;
+    var re2 = new RegExp('ABC\\-001');
+
+    re1; // /ABC\-001/
+    re2; // /ABC\-001/
+</pre>
+<p>^[A-Za-z0-9\u4E00-\u9FA5-]{2,16}$ 验证，只允许数字、26个英文字母大小写、中文及其组合。 </p>
+<script>
+    var re1 = /ABC\-001/;
+    var re2 = new RegExp('ABC\\-001');
+
+    console.log((re1)); // /ABC\-001/
+    console.log(typeof (re1));//object
+    console.log((re2)); // /ABC\-001/
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+  //  var arrayObj = new Array();　//创建一个数组
+  //  var arrayObj = new Array([size]);　//创建一个数组并指定长度，注意不是上限，是长度
+//  var arrayObj = new Array([element0[, element1[, ...[, elementN]]]]);　//创建一个数组并赋值
+//  arrayObj. push([item1 [item2 [. . . [itemN ]]]]);// 将一个或多个新元素添加到数组结尾，并返回数组新长度
+//  arrayObj.unshift([item1 [item2 [. . . [itemN ]]]]);// 将一个或多个新元素添加到数组开始，数组中的元素自动后移，返回数组新长度
+//  arrayObj.splice(insertPos,0,[item1[, item2[, . . . [,itemN]]]]);//将一个或多个新元素插入到数组的指定位置，插入位置的元素自动后移，返回""。
+    //arrayObj.slice(start, [end]); //以数组的形式返回数组的一部分，注意不包括 end 对应的元素，如果省略 end 将复制start 之后的所有元素
+    //arrayObj.concat([item1[, item2[, . . . [,itemN]]]]); //将多个数组（也可以是字符串，或者是数组和字符串的混合）连接为一个数组，返回连接好的新的数组
+
+
+    var obj = "1234";
+    var obj1 = obj.split("");//字符串转数组
+    var obj2 = obj1.join("_");//数组转字符串
+    obj1.push("5");//数组添加元素 后
+    console.log(obj1);
+    obj1.unshift("5");//数组添加元素 前
+    console.log(obj1);
+  obj1.splice(3,1,"6");//数组添加元素 中间//位置，数量，项目
+  console.log(obj1);
+
+  obj1.pop("5");//数组移除元素 后
+  console.log(obj1);
+
+  obj1.shift("5");//数组移除元素 前
+  console.log(obj1);
+
+  obj1.splice(2,1,"3");//数组添加元素 中间//位置，数量
+  console.log(obj1);
+    var obj3 = obj1.concat([5,6]);//数组连接 新的数组
+    var obj4 = obj3.slice(0);//数组的拷贝 新的数组
+    var obj5 = obj3.concat();//数组的拷贝 新的数组
+    obj5.reverse();
+    obj5.sort();
+    document.write(obj1 + "</br>" + obj2 + "</br>" + obj3 + "</br>"  + obj4 + "</br>"  + obj5);
+</script>
+</body>
+</html>

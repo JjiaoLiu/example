@@ -1,0 +1,62 @@
+<!--_meta 作为公共模版分离出去-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<title>添加用户 - H-ui.admin v2.3</title>
+</head>
+<body>
+<article class="page-container">
+	<form class="form form-horizontal" id="form-member-add">
+       <table class="tablelist">
+        <thead>
+        <tr>
+         <th><a href="#" onclick="allselect()">全选</a>/
+              <a href="#" onclick="cencelselect()">全不选</a></th>
+            <th>角色名称<i class="sort"></i></th>
+            <th>备注</th>
+            <th>状态</th>
+           <!--  <th width="25%">操作</th> -->
+        </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+            <td><input type="checkbox" /></td>
+                <td class="text-b">ccc</td>
+                <td>aaa</td>
+                <td>aaa</td>
+            </tr>
+			<tr>
+			<td><input type="checkbox" /></td>
+			<td class="text-b">ccc</td>
+			<td>aaa</td>
+			<td>aaa</td>
+			</tr>
+			<tr>
+			<td><input  type="checkbox"/></td>
+			<td class="text-b">ccc</td>
+			<td>aaa</td>
+			<td>aaa</td>
+			</tr>
+        </tbody>
+    </table>
+	</form>
+</article>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+function cencelselect() {
+            $(".tablelist").find("input").prop("checked", false);
+			return false;
+        }
+function allselect() {
+            $(".tablelist").find("input").prop("checked", true);
+			return false;
+        }
+</script>
+</body>
+</html>

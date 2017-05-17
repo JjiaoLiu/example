@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!-- HTML结构 -->
+<div id="test-external">
+    <p>如何学习<a href="http://jquery.com">jQuery</a>？</p>
+    <p>首先，你要学习<a href="http://www.liaoxuefeng.com//wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000">JavaScript</a>，
+        并了解基本的<a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a>。</p>
+</div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    $.fn.external = function () {
+        // return返回的each()返回结果，支持链式调用:
+        return this.filter('a').each(function () {
+            // 注意: each()内部的回调函数的this绑定为DOM本身!
+            var a = $(this);
+            var url = a.attr('href');
+            if (url && (url.indexOf('http://')===0 || url.indexOf('https://')===0)) {
+                a.attr('href', '#0')
+                        .removeAttr('target')
+                        .append(' <i class="uk-icon-external-link"></i>')
+                        .click(function () {
+                            if(confirm('你确定要前往' + url + '？')) {
+                                window.open(url);
+                            }
+                        });
+            }
+        });
+    }
+    $('#test-external a').external();
+</script>
+</body>
+</html>

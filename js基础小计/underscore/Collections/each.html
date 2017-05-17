@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>集合函数 (数组 或对象)</title>
+</head>
+<body>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+//    _.each(list, iteratee, [context])
+    _.each([1, 2, 3], alert);//(element, index, list)
+//    alerts each number in turn...
+    _.each({one: 1, two: 2, three: 3}, alert);//(value, key, list)
+//    alerts each number value in turn...
+    var a = ['A', 'B', 'C'];
+    a.forEach(function (element, index, array) {
+        // element: 指向当前元素的值
+        // index: 指向当前索引
+        // array: 指向Array对象本身
+        alert(element);
+        //    forEach()方法是ES5.1标准引入的
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    'use strict';
+    var a=5;
+    function b(){
+        alert(a);//5
+        console.log(a);//5
+        a = 6;// var a=6;
+        console.log(a);//6
+    }
+    b();
+    alert(a);//6
+    function foo() {
+        var x = 'Hello, ' + y;
+        alert(x);//hello,undefined
+        var y = 'Bob';//JavaScript引擎自动提升了变量y的声明，但不会提升变量y的赋值
+    }
+    foo();
+    function foo2() {
+        for (var ww=0; i<100; i++) {
+            //
+        }
+        alert(ww);//100//块级作用域
+    }
+    foo2();
+</script>
+</body>
+</html>

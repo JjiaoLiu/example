@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>indexOf:返回value在该 array 中的索引值，如果value不存在 array中就返回-1。
+    indexOf(array, value, [isSorted]) </p>
+<p>lastIndexOf:返回value在该 array 中的从最后开始的索引值，如果value不存在 array中就返回-1。
+    _.lastIndexOf(array, value, [fromIndex]) </p>
+<p>
+    sortedIndex:使用二分查找确定value在list中的位置序号，value按此序号插入能保持list原有的排序。
+    _.sortedIndex(list, value, [iteratee], [context])
+</p>
+<p>findIndex:类似于_.indexOf，当predicate通过真检查时，返回第一个索引值；否则返回-1。
+    _.findIndex(array, predicate, [context])
+</p>
+<p>findLastIndex:和_.findIndex类似，但反向迭代数组，当predicate通过真检查时，最接近末端的索引值将被返回。
+    _.findLastIndex(array, predicate, [context])
+</p>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script>
+    _.indexOf([1, 2, 3], 2);//1
+    _.lastIndexOf([1, 2, 3, 1, 2, 3], 2);//4
+    _.sortedIndex([10, 20, 30, 40, 50], 35);//3
+    var stooges = [{name: 'moe', age: 40}, {name: 'curly', age: 60}];
+    _.sortedIndex(stooges, {name: 'larry', age: 50}, 'age');//1
+    _.findIndex([4, 6, 8, 12], isPrime);//-1
+    _.findIndex([4, 6, 7, 12], isPrime);//2
+    var users = [{'id': 1, 'name': 'Bob', 'last': 'Brown'},
+        {'id': 2, 'name': 'Ted', 'last': 'White'},
+        {'id': 3, 'name': 'Frank', 'last': 'James'},
+        {'id': 4, 'name': 'Ted', 'last': 'Jones'}];
+    _.findLastIndex(users, {
+        name: 'Ted'
+    });//3
+</script>
+</body>
+</html>
