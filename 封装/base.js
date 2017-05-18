@@ -2,45 +2,117 @@
  * Created by Administrator on 2017/5/16 0016.
  */
 "use strict";
-var $ = function (_this) {
-    return new Base(_this)
+// $返回一个Base对象
+var $ = function (args) {
+    return new Base(args)
 };
-function Base(_this) {
+// 在构造函数上操作elements
+function Base(args) {
     this.elements = [];
-    if (_this != undefined) {
-        this.elements[0] = _this;
+    if (typeof args == "string") {
+        switch (args.charAt(0)) {
+            case "#":
+                this.elements.push(this.getId(args.substring(1)));
+                break;
+            case ".":
+                this.elements = this.getClass(args.substring(1));
+                break;
+            default:
+                this.elements = this.getTag(args);
+        }
+    } else if (typeof args == "object") { //---- this
+        if (args != undefined) {
+            this.elements[0] = args;
+        }
     }
 }
-// dom
 Base.prototype.getId = function (id) {
-    this.elements.push(document.getElementById(id));
-    return this;
+    return document.getElementById(id);
 };
-Base.prototype.getClass = function (className, idName) {
+Base.prototype.getClass = function (className, parentNode) {
     var node = null;
-    node = arguments.length == 2 ? document.getElementById(idName) : document;
+    var temps= [];
+    if(parentNode != undefined){
+        node = parentNode;
+    }else {
+        node = document;
+    }
     var all = node.getElementsByTagName("*");
     for (var i = 0; i < all.length; i++) {
         if (all[i].className == className) {
-            this.elements.push(all[i]);
+            temps.push(all[i]);
         }
     }
-    return this;
+    return temps;
 };
-Base.prototype.getTag = function (tag) {
-    var tags = document.getElementsByTagName(tag);
-    for (var i = 0; i < tags.length; i++) {
-        this.elements.push(tags[i])
+Base.prototype.getTag = function (tag,parentNode) {
+    var node = null;
+    var temps = [];
+    if(parentNode != undefined){
+        node = parentNode;
+    }else {
+        node = document;
     }
-    return this;
+    var tags = node.getElementsByTagName(tag);
+    for (var i = 0; i < tags.length; i++) {
+        temps.push(tags[i])
+    }
+    return temps;
 };
-Base.prototype.getElement = function (num) {
-    var element = this.elements[num];
+Base.prototype.getElement = function (index) {
+    var element = this.elements[index];
     this.elements = [];
     this.elements[0] = element;
     return this;
 };
-// dom
+function getDom(args) {
+    var elements = [];
+    if (typeof args == "string") {
+        switch (args.charAt(0)) {
+            case "#":
+                return document.getElementById(args.substring(1));
+                break;
+            case ".":
+                var all = document.getElementsByTagName("*");
+                for (var i = 0; i < all.length; i++) {
+                    if (all[i].className == args.substring(1)) {
+                        elements.push(all[i]);
+                    }
+                }
+                break;
+            default:
+                var tags = document.getElementsByTagName(args);
+                for (var i = 0; i < tags.length; i++) {
+                    elements.push(tags[i])
+                }
+        }
+    }
+    return elements;
+}
+//权重有问题
+Base.prototype.find = function (str) {
+    var childElements = [];
+    for (var i = 0; i < this.elements.length; i++) {
+        switch (str.charAt(0)) {
+            case "#":
+                childElements.push(this.getId(str.substring(1)));
+                break;
+            case ".":
+                var temps = this.getClass(str.substring(1),this.elements[i]);
+                for (var j = 0; j < temps.length; j++) {
+                    childElements.push(temps[j]);
+                }
+                break;
+            default:
+                var temps = this.getTag(str,this.elements[i]);
+                for (var j = 0; j < temps.length; j++) {
+                    childElements.push(temps[j]);
+                }
+        }
+    }
+    this.elements = childElements;
+    return this;
+};
 Base.prototype.css = function (attr, value) {
     for (var i = 0; i < this.elements.length; i++) {
         if (arguments.length == 1) {
@@ -105,13 +177,13 @@ Base.prototype.show = function () {
     return this;
 };
 //使用方法：.layer("layerMain","layerClose","rgba(0,0,0,0.6)",999);
-function layer(layerMain,layerClose,bgColor,zIndex) {
+function layer(layerMain, layerClose, bgColor, zIndex) {
     var layer = null;
     layer = document.createElement("div");
     layer.className = "layer";
     document.body.appendChild(layer);
-    var $layerMain = $().getClass(layerMain);
-    var $layerClose = $().getClass(layerClose);
+    var $layerMain = $(layerMain);
+    var $layerClose = $(layerClose);
     var top = (getInner().height - parseInt($layerMain.css("height"))) / 2 + "px";
     var left = (getInner().width - parseInt($layerMain.css("width"))) / 2 + "px";
     $layerMain.css("position", "absolute")
@@ -119,7 +191,7 @@ function layer(layerMain,layerClose,bgColor,zIndex) {
         .css("z-index", parseInt(zIndex) + 1)
         .css("top", top)
         .css("left", left);
-    $().getClass("layer").css("position", "absolute")
+    $(".layer").css("position", "absolute")
         .css("z-index", zIndex)
         .css("top", "0px")
         .css("left", "0px")
@@ -127,36 +199,36 @@ function layer(layerMain,layerClose,bgColor,zIndex) {
         .css("right", "0px")
         .css("background", bgColor);
     $layerClose.css("cursor", "pointer");
-    addEvent(getClassDom(layerClose)[0],"click",closeLayer);
-    console.log("addEvent");
+    addEvent(getDom(layerClose)[0], "click", closeLayer);
+    addEvent(document, "scroll", scrollFalse);
     $layerClose.click(function () {
-        removeEvent(getClassDom(layerClose)[0],"click",closeLayer);
+        removeEvent(getDom(layerClose)[0], "click", closeLayer);
+        removeEvent(document, "scroll", scrollFalse);
     });
     function closeLayer() {
         document.body.removeChild(layer);
-        $layerMain.css("display", "none")
+        $layerMain.css("display", "none");
     }
 };
 Base.prototype.resize = function (fn) {
     addEvent(window, "resize", fn);
     return this;
 };
-Base.prototype.drag = function () {
+Base.prototype.drag = function (dragDom) {
     for (var i = 0; i < this.elements.length; i++) {
         this.elements[i].style.position = "absolute";
         addEvent(this.elements[i], "mousedown", function (e) {
-           if(this.innerHTML.trim() == "") e.preventDefault();
             var _this = this;
+            if (_this.innerHTML.trim() == "") e.preventDefault();
             var diffX = e.clientX - _this.offsetLeft;
             var diffY = e.clientY - _this.offsetTop;
-            if(e.target.tagName == "H2"){
+            if (e.target.tagName == dragDom.toUpperCase()) {
                 addEvent(document, "mousemove", move);
                 addEvent(document, "mouseup", up);
-            }else{
-                removeEvent(document,"mousemove",move);
-                removeEvent(document,"mouseup",up);
+            } else {
+                removeEvent(document, "mousemove", move);
+                removeEvent(document, "mouseup", up);
             }
-
             function move(e) {
                 var left = e.clientX - diffX;
                 var top = e.clientY - diffY;
@@ -172,42 +244,18 @@ Base.prototype.drag = function () {
                 }
                 _this.style.left = left + "px";
                 _this.style.top = top + "px";
-                if(typeof _this.setCapture != "undefined") _this.setCapture();
+                if (typeof _this.setCapture != "undefined") _this.setCapture();
             }
+
             function up() {
-                removeEvent(document,"mousemove",move);
-                removeEvent(document,"mouseup",up);
-                if(typeof _this.releaseCapture != "undefined") _this.releaseCapture();
+                removeEvent(document, "mousemove", move);
+                removeEvent(document, "mouseup", up);
+                if (typeof _this.releaseCapture != "undefined") _this.releaseCapture();
             }
         });
     }
     return this;
 };
-// dom
-function getIdDom(id) {
-    return document.getElementById(id);
-}
-function getClassDom(className, idName) {
-    var node = null;
-    var elements = [];
-    node = arguments.length == 2 ? document.getElementById(idName) : document;
-    var all = node.getElementsByTagName("*");
-    for (var i = 0; i < all.length; i++) {
-        if (all[i].className == className) {
-            elements.push(all[i])
-        }
-    }
-    return elements;
-}
-function getTagDom(tag) {
-    return document.getElementsByTagName(tag);
-}
-function getElementDom(obj, num) {
-    var elements = null;
-    elements = obj[num];
-    return elements;
-}
-// dom
 function getInner() {
     if (window.innerWidth) {
         return {
@@ -226,9 +274,9 @@ function getEvent(event) {
 }
 function preDef(event) {
     var e = getEvent(event);
-    if(typeof e.preventDefault != "indefined"){
+    if (typeof e.preventDefault != "indefined") {
         e.preventDefault();
-    }else{
+    } else {
         e.returnValue = false;
     }
 }
@@ -252,10 +300,11 @@ function addEvent(obj, type, fn) {
         //从第二次开始使用计数器存储
         obj.events[type][addEvent.ID++] = fn;
         //执行事件处理函数
-        obj["on"+type]=addEvent.exec;
+        obj["on" + type] = addEvent.exec;
     }
 }
 function removeEvent(obj, type, fn) {
+    console.log(obj);
     if (typeof removeEventListener != 'undefined') {
         obj.removeEventListener(type, fn, false);
     } else {
@@ -296,6 +345,17 @@ addEvent.fixEvent.preventDefault = function () {
 addEvent.fixEvent.stopBubble = function () {
     this.cancelBubble = true;
 };
+//滚动条清零
+function scrollFalse() {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+}
+//浏览器检测
+function getState() {
+    window.sys = {};
+    var ua = navigator.userAgent.toLowerCase();
+    document.write(ua.match(/msie ([\d.]+)/));
+}
 //兼容
 if (!String.prototype.trim) {
     String.prototype.trim = function () {

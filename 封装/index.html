@@ -4,163 +4,110 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-        html,body{
+
+        html, body {
             width: 100%;
-            height:100%;
+            height: 100%;
         }
-        #as{
+
+        #as {
             width: 100px;
             height: 100px;
             background: rebeccapurple;
         }
-        #box{
+
+        #box {
             width: 200px;
             height: 200px;
             border: 1px solid #ddd;
         }
-        .layerClose{
+
+        .layerMain {
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+
+        .layerClose {
             font-weight: bold;
             color: #fff;
+            background: blueviolet;
+        }
+
+        .border1 {
+            border: 10px solid #00B7FF;
+        }
+
+        .border2 {
+            border: 10px solid #f0ad4e;
         }
     </style>
 </head>
 <body>
-<div class="layerMain" style="display: none;background: green;width: 100px;height: 100px">
-    <h2>biaoti</h2>
-    <div class="layerClose">×</div>
+<p>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+</p>
+<p class="p1">
+    <span class="sp1">1</span>
+    <span class="sp1">2</span>
+    <span>3</span>
+</p>
+<p class="p1">
+    <span class="sp1">sp1</span>
+    <span class="sp2">sp2</span>
+    <span>3</span>
+</p>
+<p id="p1">
+    <span class="sp1">sp1</span>
+    <span>2</span>
+    <span>3</span>
+</p>
+<div class="layerMain">
+    <div class="layerClose">X</div>
 </div>
-<button id="button">点击</button>
-<div>
-    <ul>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-    </ul>
-    <ul>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-    </ul>
-    <ul>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-    </ul>
-    <ul>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-    </ul>
-    <ul>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-    </ul>
-    <ul>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-    </ul>
-    <ul>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-    </ul>
-    v
-    <ul>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-    </ul>
-    <ul>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-    </ul>
-    <ul>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-    </ul><ul>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-</ul><ul>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-</ul><ul>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-</ul><ul>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-</ul>
-    <ul>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-    </ul><ul>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-</ul>
-    <ul>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-    </ul>
-    <ul>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-    </ul><ul>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-</ul><ul>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-</ul><ul>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-</ul><ul>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-</ul><ul>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-</ul><ul>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-</ul><ul>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-    <li class="red">121212</li>
-</ul>
-    <ul>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-        <li class="red">121212</li>
-    </ul>
-
-</div>
+<button id="button">按钮</button>
+<div style="background: red;width: 100px;height: 100px;" class="box1"></div>
+<div class="box2" style="background: red;width: 100px;height: 100px;"></div>
 <script src="base.js"></script>
 <script>
-    $().getId("button").click(function () {
-        layer("layerMain","layerClose","rgba(0,0,0,0.6)",999);
-    })
+    window.onload = function () {
+        $(".box1").hover(function () {
+            $(this).css("background", "#ff6600");
+            $("p").hide();
+            $(this).addClass("border1");
+        }, function () {
+            $(this).css("background", "red");
+            $("p").show();
+            $(this).removeClass("border1");
+        });
+        $(".box2").drag("div");
+        $("p").css("color", "red");
+        $(".p1").css("color", "blue");
+        $(".p1").find(".sp1").css("color", "yellow");
+        $(".p1").find(".sp2").css("color", "#aaa");
+        $(".p1").find(".sp2").css("color", "#aaa");
+        $("#p1").find("span").css("color", "green");
+        $("#p1").find("span").getElement(2).css("color", "red");
+        $("#p1").find("span").getElement(1).html("html");
+        layer(".layerMain", ".layerClose", "rgba(0,0,0,0.6)", 999);
+        var obj1 = document.getElementById("button");
+        var obj3 = getDom("#button");
+        addEvent(obj3, "click", fn2);
+        addEvent(obj1, "click", fn1);
+        function fn1() {
+            alert("1")
+        }
+
+        function fn2() {
+            alert("2")
+        }
+    }
 </script>
 </body>
 </html>
