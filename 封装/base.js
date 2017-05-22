@@ -31,10 +31,10 @@ Base.prototype.getId = function (id) {
 };
 Base.prototype.getClass = function (className, parentNode) {
     var node = null;
-    var temps= [];
-    if(parentNode != undefined){
+    var temps = [];
+    if (parentNode != undefined) {
         node = parentNode;
-    }else {
+    } else {
         node = document;
     }
     var all = node.getElementsByTagName("*");
@@ -45,12 +45,12 @@ Base.prototype.getClass = function (className, parentNode) {
     }
     return temps;
 };
-Base.prototype.getTag = function (tag,parentNode) {
+Base.prototype.getTag = function (tag, parentNode) {
     var node = null;
     var temps = [];
-    if(parentNode != undefined){
+    if (parentNode != undefined) {
         node = parentNode;
-    }else {
+    } else {
         node = document;
     }
     var tags = node.getElementsByTagName(tag);
@@ -98,13 +98,13 @@ Base.prototype.find = function (str) {
                 childElements.push(this.getId(str.substring(1)));
                 break;
             case ".":
-                var temps = this.getClass(str.substring(1),this.elements[i]);
+                var temps = this.getClass(str.substring(1), this.elements[i]);
                 for (var j = 0; j < temps.length; j++) {
                     childElements.push(temps[j]);
                 }
                 break;
             default:
-                var temps = this.getTag(str,this.elements[i]);
+                var temps = this.getTag(str, this.elements[i]);
                 for (var j = 0; j < temps.length; j++) {
                     childElements.push(temps[j]);
                 }
@@ -116,11 +116,7 @@ Base.prototype.find = function (str) {
 Base.prototype.css = function (attr, value) {
     for (var i = 0; i < this.elements.length; i++) {
         if (arguments.length == 1) {
-            if (typeof window.getComputedStyle != 'undefined') {//w3c
-                return window.getComputedStyle(this.elements[i], null)[attr];
-            } else if (typeof this.elements[i].currentStyle != 'undefined') {//ie
-                return this.elements[i].currentStyle[attr];
-            }
+            return getStyle(this.elements[i], attr) + 'px';
         }
         this.elements[i].style[attr] = value;
     }
@@ -256,6 +252,29 @@ Base.prototype.drag = function (dragDom) {
     }
     return this;
 };
+window.timer = null;
+Base.prototype.animate = function (obj) {
+    clearInterval(window.timer);
+    //参数
+    var attr = obj['attr'];
+    var step = obj['step'] == undefined ? 10 : obj['step'];
+    var target = obj['target'];
+    var duration = obj['duration'] == undefined ? 50 : obj['duration'];
+    for (var i = 0; i < this.elements.length; i++) {
+        var element = this.elements[i];
+        if (getStyle(element, attr) > target) {
+            step = -step;
+        }
+        timer = setInterval(function () {
+            element.style[attr] = getStyle(element, attr) + step + 'px';
+            if ((getStyle(element, attr) + step >= obj['target'] && step > 0 ) || (getStyle(element, attr) + step <= obj['target'] && step < 0 )) {
+                element.style[attr] = target + "px";
+                clearInterval(timer);
+            }
+        }, duration)
+    }
+    return this;
+};
 function getInner() {
     if (window.innerWidth) {
         return {
@@ -304,7 +323,6 @@ function addEvent(obj, type, fn) {
     }
 }
 function removeEvent(obj, type, fn) {
-    console.log(obj);
     if (typeof removeEventListener != 'undefined') {
         obj.removeEventListener(type, fn, false);
     } else {
@@ -355,6 +373,15 @@ function getState() {
     window.sys = {};
     var ua = navigator.userAgent.toLowerCase();
     document.write(ua.match(/msie ([\d.]+)/));
+}
+function getStyle(element, attr) {
+    var value;
+    if (typeof window.getComputedStyle != 'undefined') {
+        value = parseInt(window.getComputedStyle(element, null)[attr]);
+    } else if (typeof element.currentStyle != 'undefined') {
+        value = parseInt(element.currentStyle[attr]);
+    }
+    return value;
 }
 //兼容
 if (!String.prototype.trim) {

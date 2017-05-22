@@ -72,6 +72,7 @@
     <div class="layerClose">X</div>
 </div>
 <button id="button">按钮</button>
+<div style="width: 100px;height: 100px;background: greenyellow;position: absolute;left:300px" class="ani"></div>
 <div style="background: red;width: 100px;height: 100px;" class="box1"></div>
 <div class="box2" style="background: red;width: 100px;height: 100px;"></div>
 <script src="base.js"></script>
@@ -103,10 +104,18 @@
         function fn1() {
             alert("1")
         }
-
         function fn2() {
             alert("2")
         }
+        var width = getStyle(document.getElementsByClassName("box1")[0],"width");
+        console.log(width);
+        $(".ani");
+        $(".ani").animate({
+            "attr":"left",
+            "step":1,
+            "target":200,
+            "duration":50
+        });
     }
 </script>
 </body>
