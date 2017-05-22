@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>将 array 拆分成多个 size 长度的块，把这些块组成一个新数组。 如果 array 无法被分割成全部等长的块，那么最后剩余的元素将组成一个块。</p>
+
+<script src="../lodash.min.js"></script>
+<script>
+    _.chunk(['a', 'b', 'c', 'd'], 2);
+    // => [['a', 'b'], ['c', 'd']]
+
+    _.chunk(['a', 'b', 'c', 'd'], 3);
+    // => [['a', 'b', 'c'], ['d']]
+</script>
+</body>
+</html>

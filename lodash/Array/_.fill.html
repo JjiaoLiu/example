@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>_.fill(array, value, [start=0], [end=array.length])</p>
+<p>使用 value 值来填充（也就是替换） array，从start位置开始, 到end位置结束（但不包含end位置） </p>
+<script src="../lodash.min.js"></script>
+<script>
+    var array = [1, 2, 3];
+
+    _.fill(array, 'a');
+    console.log(array);
+    // => ['a', 'a', 'a']
+
+    _.fill(Array(3), 2);
+    // => [2, 2, 2]
+
+    _.fill([4, 6, 8], '*', 1, 2);
+    // => [4, '*', 8]
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>使用二进制搜索来确定值应该插入数组的排序顺序。</p>
+<p>返回value 应该插入数组array位置的索引值</p>
+<script src="../lodash.min.js"></script>
+<script>
+    _.sortedIndex([30, 50], 40);
+    // => 1
+
+    _.sortedIndex([4, 4, 5, 5], 5);
+    // => 2
+
+    var dict = { 'data': { 'thirty': 30, 'forty': 40, 'fifty': 50 } };
+
+    // using an iteratee function
+    _.sortedIndex(['thirty', 'fifty'], 'forty', function(word) {
+        return this.data[word];
+    }, dict);
+    // => 1
+
+    // using the `_.property` callback shorthand
+    _.sortedIndex([{ 'x': 30 }, { 'x': 50 }], { 'x': 40 }, 'x');
+    // => 1
+</script>
+</body>
+</html>

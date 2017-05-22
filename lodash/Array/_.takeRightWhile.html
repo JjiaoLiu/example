@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>从数组右侧开始 取得 n 个元素;n默认为1</p>
+<script src="../lodash.min.js"></script>
+<script>
+    _.takeRightWhile([1, 2, 3], function(n) {
+        return n > 1;
+    });
+    // => [2, 3]
+</script>
+</body>
+</html>

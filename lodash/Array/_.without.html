@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>返回排除了某些元素的数组集合。</p>
+<script src="../lodash.min.js"></script>
+<script>
+    var zipped = _.zip([1, 2], [10, 20], [100, 200]);
+    // => [[1, 10, 100], [2, 20, 200]]
+
+    _.unzipWith(zipped, _.add);
+    // => [3, 30, 300]
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>将 array 中的前 n 个元素去掉，然后返回剩余的部分。</p>
+
+<script src="../lodash.min.js"></script>
+<script>
+    _.drop([1, 2, 3]);
+    // => [2, 3] 默认是1开始的
+
+    _.drop([1, 2, 3], 2);
+    // => [3]
+
+    _.drop([1, 2, 3], 5);
+    // => []
+
+    _.drop([1, 2, 3], 0);
+    // => [1, 2, 3]
+</script>
+</body>
+</html>

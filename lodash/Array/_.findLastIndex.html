@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../lodash.min.js"></script>
+<script>
+    var users = [
+        { 'user': 'barney',  'active': true },
+        { 'user': 'fred',    'active': false },
+        { 'user': 'pebbles', 'active': false }
+    ];
+
+    _.findLastIndex(users, function(chr) {
+        return chr.user == 'pebbles';
+    });
+    // => 2
+
+    // using the `_.matches` callback shorthand
+    _.findLastIndex(users, { 'user': 'barney', 'active': true });
+    // => 0
+
+    // using the `_.matchesProperty` callback shorthand
+    _.findLastIndex(users, 'active', false);
+    // => 2
+
+    // using the `_.property` callback shorthand
+    _.findLastIndex(users, 'active');
+    // => 0
+</script>
+</body>
+</html>

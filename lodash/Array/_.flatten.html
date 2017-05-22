@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>可以理解为将嵌套数组的维数减少，flattened（平坦）. 如果 isDeep 值为 true 时，嵌套数组将递归为一维数组, 否则只减少嵌套数组一个级别的维数.</p>
+<script src="../lodash.min.js"></script>
+<script>
+    _.flatten([1, [2, 3, [4]]]);
+    // => [1, 2, 3, [4]]
+
+    // using `isDeep`
+    _.flatten([1, [2, 3, [4]]], true);
+    // => [1, 2, 3, 4]
+</script>
+</body>
+</html>

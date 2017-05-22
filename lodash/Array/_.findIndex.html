@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../lodash.min.js"></script>
+<script>
+    var users = [
+        { 'user': 'barney',  'active': false },
+        { 'user': 'fred',    'active': false },
+        { 'user': 'pebbles', 'active': true }
+    ];
+
+    _.findIndex(users, function(chr) {
+        return chr.user == 'barney';
+    });
+    // => 0
+
+    // using the `_.matches` callback shorthand
+    _.findIndex(users, { 'user': 'fred', 'active': false });
+    // => 1
+
+    // using the `_.matchesProperty` callback shorthand
+    _.findIndex(users, 'active', false);
+    // => 0
+
+    // using the `_.property` callback shorthand
+    _.findIndex(users, 'active');
+    // => 2
+</script>
+</body>
+</html>

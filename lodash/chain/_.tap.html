@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../lodash.min.js"></script>
+<script>
+    _([1, 2, 3])
+        .tap(function(array) {
+            array.pop();
+        })
+        .reverse()
+        .value();
+    // => [2, 1]
+</script>
+</body>
+</html>

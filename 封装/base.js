@@ -160,9 +160,20 @@ Base.prototype.hover = function (over, out) {
     }
     return this;
 };
-Base.prototype.hide = function () {
+Base.prototype.hide = function (attr,time) {
+    clearInterval(window.timer);
+    var attr = typeof attr == 'undefined' ? 0 : attr;
+    var time = typeof time == 'undefined' ? 0 : time;
+    var delay = attr / time;
     for (var i = 0; i < this.elements.length; i++) {
-        this.elements[i].style.display = "none";
+        var element = this.elements[i];
+        timer = setInterval(function () {
+            element.style[attr] = getStyle(element, attr) -delay;
+            if (getStyle(element, attr) <= 0) {
+                element.style[attr] = attr;
+                clearInterval(timer);
+            }
+        }, delay)
     }
     return this;
 };
@@ -252,6 +263,7 @@ Base.prototype.drag = function (dragDom) {
     }
     return this;
 };
+window.timer1 = null;
 window.timer = null;
 Base.prototype.animate = function (obj) {
     clearInterval(window.timer);

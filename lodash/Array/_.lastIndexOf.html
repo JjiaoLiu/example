@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>该方法类似 _.indexOf ，只不过_.lastIndexOf是从右向左遍历数组array.</p>
+
+<script src="../lodash.min.js"></script>
+<script>
+    _.lastIndexOf([1, 2, 1, 2], 2);
+    // => 3
+
+    // using `fromIndex`
+    _.lastIndexOf([1, 2, 1, 2], 2, 2);
+    // => 1
+
+    // performing a binary search
+    _.lastIndexOf([1, 1, 2, 2], 2, true);
+    // => 3
+</script>
+</body>
+</html>

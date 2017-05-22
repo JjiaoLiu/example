@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>_.dropRightWhile(array, [predicate=_.identity], [thisArg])</p>
+从尾端查询（右数）数组 array ，第一个不满足predicate 条件的元素开始截取数组. thisArg为predicate 条件执行上下文对象绑定的参数 .
+
+参数 predicate 提供的是一个属性名称，就通过提供的参数使用 _.property方法返回一个回调函数
+
+如果参数thisArg提供的话，就使用 _.matchesProperty方法匹配相同的属性值，相同返回true,不同返回false
+
+如果参数predicate提供的是一个对象，就使用 _.matches方法匹配相同的元素，相同返回true,不同返回false
+
+参数
+array (Array): 需要查询的数组
+[predicate=_.identity] (Function|Object|string): 数组迭代判断条件
+[thisArg] (*): 对应 predicate 属性的值.
+返回值
+(Array): 返回截取元素后的数组
+<script src="../lodash.min.js"></script>
+<script>
+    _.dropRightWhile([1, 2, 3], function(n) {
+        return n > 1;
+    });
+    // => [1]
+</script>
+</body>
+</html>

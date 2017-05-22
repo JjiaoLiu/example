@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>将 array 尾部的 n 个元素去除，并返回剩余的部分。</p>
+
+<script src="../lodash.min.js"></script>
+<script>
+    _.dropRight([1, 2, 3]);
+    // => [1, 2]
+
+    _.dropRight([1, 2, 3], 2);
+    // => [1]
+
+    _.dropRight([1, 2, 3], 5);
+    // => []
+
+    _.dropRight([1, 2, 3], 0);
+    // => [1, 2, 3]
+</script>
+</body>
+</html>

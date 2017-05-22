@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>获取value在数组 array所在的索引值 使用 SameValueZero 来保证比较的质量（第一个全等===的元素）. 如果 fromIndex 值是负数, 则从array末尾起算. 如果 fromIndex为true时，对已排序的数组array执行二分（二进制）查找</p>
+<p>_.indexOf(array, value, [fromIndex=0])</p>
+array (Array): 需要查找的数组
+value (*): 需要查找的元素
+[fromIndex=0] (boolean|number): 查询的位置或者true值时对一个已排序的数组进行二分查找.
+<script src="../lodash.min.js"></script>
+<script>
+    _.chunk(['a', 'b', 'c', 'd'], 2);
+    // => [['a', 'b'], ['c', 'd']]
+
+    _.chunk(['a', 'b', 'c', 'd'], 3);
+    // => [['a', 'b', 'c'], ['d']]
+</script>
+</body>
+</html>
