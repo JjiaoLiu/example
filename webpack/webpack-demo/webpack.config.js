@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const extractLESS = new ExtractTextPlugin('styles.css');
 const UglifyJSPlugin = new webpack.optimize.UglifyJsPlugin({
        beautify: true,
-       compress: { warnings: false, },
+       compress: { warnings: true, },
        output: { comments: true }
     })
 const HtmlWebpackPluginnew = new HtmlWebpackPlugin({//根据模板插入css/js等生成最终HTML
@@ -24,7 +24,7 @@ const HtmlWebpackPluginnew = new HtmlWebpackPlugin({//根据模板插入css/js�
 module.exports = {
     entry: {
         main: './app/index.js',
-        vendor:['lodash','jquery']
+        vendor:['lodash','jquery','react','react-router-dom']
     },
     output: {
         filename: '[name].js',
@@ -58,7 +58,12 @@ module.exports = {
         extractLESS,
         HtmlWebpackPluginnew,
         new webpack.HotModuleReplacementPlugin(),
-        UglifyJSPlugin
+        UglifyJSPlugin,
+        new webpack.DefinePlugin({
+            'process.env':{
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
     ],
     devServer:{
         historyApiFallback:true,
