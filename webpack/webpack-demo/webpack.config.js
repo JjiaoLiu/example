@@ -33,11 +33,11 @@ module.exports = {
     module: {
         rules: [{
             test: /\.css$/,
-            use: ['style-loader', 'css-loader']
+            use: ['style-loader', 'css-loader',"postcss-loader"]
         }, {
             test: /\.less$/,
             use: extractLESS.extract(
-                [ "css-loader","less-loader"]
+                [ "css-loader","postcss-loader","less-loader"]
             )
         }, {
             test: /\.js$/,

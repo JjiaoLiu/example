@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import {Button} from 'antd';
 import './base.less'
+import './test.less'
 import imgUrl from './img1.jpg';
 if(module.hot) {
     // accept itself
